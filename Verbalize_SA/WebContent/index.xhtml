@@ -1,0 +1,512 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Verbalize</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/css/estilo2.css" />
+	<h:outputStylesheet name="/css/style.css" />
+	<!-- <h:outputStylesheet name="/bootstrap/template/offcanvas.css" /> -->
+</h:head>
+
+<h:body>
+
+	<section id="topo"></section>
+	<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
+		<a href="#" class="brand">
+			<div class="navbar-brand"></div>
+		</a>
+		<div class="navbar-header">
+			<!-- Botão para uso em resoluções menores -->
+			<button class="navbar-toggle collapsed" data-toggle="collapse"
+				data-target="#barra">
+				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+
+
+
+		</div>
+		<!-- Inicio do conteudo do meu menu principal -->
+		<div class="collapse navbar-collapse" id="barra">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active "><a href="#topo">Home</a></li>
+				<li>
+					<h:link outcome="/loginAluno" value="Aluno" />
+				</li>
+				<li><a href="#">Professor</a></li>
+				<li><a href="#cursos">Cursos</a></li>
+				<li><a href="#jogos">Jogos</a></li>
+				<li><a href="#gallery">Notícias</a></li>
+			</ul>
+		</div>
+	</div>
+	</nav>
+
+	<header id="page-top">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-lg-12 index-video-wrapper">
+				<video autoplay="true" loop="true" id="index-video"> <source
+					src="#{resource['images:Statue_Of_Liberty.mp4']}" type="video/mp4" /></video>
+				<li id="fundo">
+					<div class="banner-img">
+						<img src="images/1.jpg" class="img-responsive" alt="" />
+					</div>
+					<h4>Aprendendo para a vida</h4>
+					<div class="banner-info">
+						<h3>Inglês e Espanhol</h3>
+						<p>Matricúlas abertas</p>
+					</div>
+				</li>
+
+			</div>
+		</div>
+	</div>
+	</header>
+
+	<div class="content-wrapper">
+
+
+		<section class="gallery primary" id="gallery">
+		<div class="container">
+			<div class="row">
+
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<h2>Notícias</h2>
+						<hr class="star-primary" />
+					</div>
+				</div>
+
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="sorting pull-left">
+						<div class="filter pull-left filimg" data-filter="all">Mostrar
+							Tudo</div>
+						<div class="filter pull-left filimg" data-filter=".category-1">Inglês</div>
+						<div class="filter pull-left filimg" data-filter=".category-2">Espanhol</div>
+					</div>
+				</div>
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<div class="galleryimg" id="galleryimg">
+						<div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="1">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia1.png" alt="img13" /> <figcaption>
+
+							<p>Conheça a metodologia dos nossos cursos infantis.</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="2">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia2.png" alt="img13" /> <figcaption>
+
+							<p>Nove curiosidades sobre o Reino Unido.</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="3">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia3.png" alt="img13" /> <figcaption>
+
+							<p>Veja um gráfico com os idiomas do mundo.</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="4">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia4.png" alt="img13" /> <figcaption>
+
+							<p>Sasha lança livro sobre sociedade secreta</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="5">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia5.png" alt="img13" /> <figcaption>
+
+							<p>Inglesa cheira um brinco</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="6">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia6.png" alt="img13" /> <figcaption>
+
+							<p>Metallica</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="7">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia7.png" alt="img13" /> <figcaption>
+
+							<p>Nova saga do cavaleiro das trevas</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="8">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia8.png" alt="img13" /> <figcaption>
+
+							<p>Pense fora da caixa</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+						<div class="grid mix category-1 col-md-4 col-sm-6 col-xs-6"
+							data-myorder="9">
+							<figure class="effect-Beauty"> <h:graphicImage
+								library="images" name="noticia9.png" alt="img13" /> <figcaption>
+
+							<p>Nova espanção para The Witcher 3 Wild Hunt</p>
+							<a href="#">View more</a> </figcaption> </figure>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</section>
+
+		<section class="success" id="cursos">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Cursos</h2>
+					<hr class="star-light" />
+				</div>
+			</div>
+
+
+
+
+
+			<button class="btn btn-block btn-cursos" type="button"
+				data-toggle="collapse" data-target="#ingles" aria-expanded="false"
+				aria-controls="collapseExample">Inglês</button>
+
+			<div class="collapse" id="ingles">
+				<div class="well col-xs-12">
+
+					<div class="col-md-6 col-xs-12">
+						<h:graphicImage library="images" name="inglaterra.png" alt=""
+							class="img-responsive" />
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+
+						<div class="price-table row-fluid">
+							<div class="span4 price-column">
+								<h3>Inglês</h3>
+								<ul class="list">
+									<li class="price">R$ 199,99</li>
+									<li><strong>3 Dias</strong>Por Semana</li>
+									<li><strong>17 Meses </strong>Presenciais</li>
+									<li><strong>Professores </strong>Qualificados</li>
+								</ul>
+								<a href="#contact" class="button button-ps">Matricule-se</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+
+			<br />
+
+			<button class="btn btn-block btn-cursos" type="button"
+				data-toggle="collapse" data-target="#espanhol" aria-expanded="false"
+				aria-controls="collapseExample">Espanhol</button>
+
+			<div class="collapse" id="espanhol">
+
+				<div class="well col-xs-12">
+
+					<div class="col-md-6 col-xs-12">
+						<h:graphicImage library="images" name="espanha.png" alt=""
+							class="img-responsive" />
+					</div>
+
+					<div class="col-md-6 col-xs-12">
+
+						<div class="price-table row-fluid">
+							<div class="span4 price-column">
+								<h3>Espanhol</h3>
+								<ul class="list">
+									<li class="price">R$ 199,99</li>
+									<li><strong>3 Dias</strong>Por Semana</li>
+									<li><strong>17 Meses </strong>Presenciais</li>
+									<li><strong>Professores </strong>Qualificados</li>
+								</ul>
+								<a href="#contact" class="button button-ps">Matricule-se</a>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+
+
+		</div>
+		</section>
+
+		<section class="primary" id="noticias">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Redes Sociais</h2>
+					<hr class="star-primary" />
+				</div>
+			</div>
+			<center>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="botaoSocial" id="facebook"></div>
+					</div>
+					<div class="col-md-4">
+						<div class="botaoSocial" id="twitter"></div>
+					</div>
+					<div class="col-md-4">
+						<div class="botaoSocial" id="google"></div>
+					</div>
+				</div>
+			</center>
+		</div>
+		</section>
+
+		<section class="success" id="jogos">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Jogos</h2>
+					<hr class="star-light" />
+				</div>
+			</div>
+			<div class="row">
+
+				<div class="carousel slide col-xs-offset-1 col-xs-10" id="carrosel">
+
+					<!-- Indicadores -->
+					<ol class="carousel-indicators">
+						<li data-target="#carrosel" data-slide-to="0" class="active"></li>
+						<li data-target="#carrosel" data-slide-to="1"></li>
+						<li data-target="#carrosel" data-slide-to="2"></li>
+						<li data-target="#carrosel" data-slide-to="3"></li>
+					</ol>
+
+					<div class="carousel-inner">
+						<div class="item active">
+							<a href="Layout/index.xhtml">
+								<h:graphicImage library="images" name="diveringles1.png" alt="img1" class="carrosel" />
+							</a>
+							<div class="carousel-caption">
+								<h4>Diveringlês</h4>
+								<p>Diveringlês é um web site gratuito de jogos didaticos
+									visando o aprendizado da lingua inglesa, lançado em 2015.</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<a href="quizroom/index1.xhtml">
+								<h:graphicImage library="images" name="quizroom1.png" alt="img1" class="carrosel" />
+							</a>
+							<div class="carousel-caption">
+								<h4>Quizroom</h4>
+								<p>Divirta-se com o Quizroom um quiz sobre os objetos do
+									querto.</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<a href="Layout/index.xhtml">
+								<h:graphicImage library="images" name="diveringles2.png" alt="img1" class="carrosel" />
+							</a>
+							<div class="carousel-caption">
+								<h4>Diveringlês</h4>
+								<p>Diveringlês é um web site gratuito de jogos didaticos
+									visando o aprendizado da lingua inglesa, lançado em 2015.</p>
+							</div>
+						</div>
+
+						<div class="item">
+							<a href="quizroom/index1.xhtml">
+								<h:graphicImage library="images" name="quizroom2.png" alt="img1" class="carrosel" />
+							</a>
+							<div class="carousel-caption">
+								<h4>Quizroom</h4>
+								<p>Divirta-se com o Quizroom um quiz sobre os objetos do
+									querto.</p>
+							</div>
+						</div>
+
+						<!-- Controles -->
+						<li data-target="#carrosel" class="carousel-control left"
+							data-slide="prev" role="button"><span
+							class="glyphicon glyphicon-chevron-left" aria-hiden="true"></span>
+							<span class="sr-only">Anterior</span></li>
+						<li data-target="#carrosel" class="carousel-control right"
+							data-slide="next" role="button"><span
+							class="glyphicon glyphicon-chevron-right" aria-hiden="true"></span>
+							<span class="sr-only">Próximo</span></li>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+		</section>
+
+		<section class="primary" id="contact">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Contato</h2>
+					<hr class="star-primary" />
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-8 col-lg-offset-2">
+
+					<form id="cadForm" action="cadInicial?cmd=salvar" method="post"
+						class="col-md-12">
+
+						<div class="form-group col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+								<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-4">
+							<div class="input-group">
+								<span class="input-group-addon"><span
+									class="glyphicon glyphicon-calendar"></span></span> <input type="date"
+									id="dataNasc" class="form-control" name="dtNasc"
+									placeholder="Data de Nascimento" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-4">
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span> 
+									<input
+									type="text" id="telefone" class="form-control" name="telefone"
+									placeholder="Telefone" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-8">
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input type="text"
+									class="form-control" id="email" name="email"
+									placeholder="Muriel@xrato.com" />
+							</div>
+						</div>
+
+						<div class="form-group col-md-8">
+							<label for="sel1">Curso Pretendido</label>
+							<div class="input-group">
+								<span class="input-group-addon"><span class="glyphicon glyphicon-education"></span></span> 
+									<select
+									class="form-control" id="curso" name="curso"
+									placeholder="Selecione">
+									<option>Inglês</option>
+									<option>Espanhol</option>
+									<option>Arabe</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-group col-md-12">
+							<label for="comment">Duvidas</label>
+							<textarea class="form-control" rows="5" name="duvidas"
+								id="comment"></textarea>
+						</div>
+						<div class="form-group col-md-12">
+							<button type="submit" value="salvar" class="btn btn-success">Enviar</button>
+							<button type="reset" value="Limpar" class="btn btn-primary"
+								style="padding: 6px 12px !important;">Limpar</button>
+						</div>
+					</form>
+
+
+				</div>
+			</div>
+		</div>
+		</section>
+		<footer class="container-fluid">
+
+		<div class="col-md-3 col-xs-6">
+			<ul>
+				<h4>Outros</h4>
+
+				<li><a href="#">Institucional</a></li>
+				<li><a target="_blank" href="http://sc.senai.br/">Senai</a></li>
+				<li><a href="admin.html">Admin</a></li>
+
+			</ul>
+		</div>
+
+		<div class="col-md-3 col-xs-6">
+			<ul>
+				<h4>Contato</h4>
+
+				<li><a href="mailto:jlima004@gmail.com"><span
+						class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+						info@verbalize.com</a></li>
+				<li><span class="glyphicon glyphicon-earphone"
+					aria-hidden="true"></span> (48)123 456789</li>
+			</ul>
+		</div>
+
+		<div class="col-md-3 col-xs-6">
+			<ul>
+				<h4>Desenvolvedores</h4>
+
+				<li><span class="glyphicon glyphicon-hand-right"></span>
+					Jefferson Lima</li>
+				<li><span class="glyphicon glyphicon-hand-right"></span>
+					Patrick Ramos</li>
+			</ul>
+		</div>
+
+		<div class="col-md-3 col-xs-6" id="logo_i">
+			<div class="logo_inverso col-xs-offset-1 col-xs-6"></div>
+			<div class="col-xs-4">
+				<a href="#topo" id="link_topo"><span
+					class="glyphicon glyphicon-arrow-up"></span> Topo</a>
+			</div>
+		</div>
+
+
+
+		</footer>
+	</div>
+
+
+
+
+	<h:outputScript name="/js/jquery.min.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/js/jquery.mixitup.js" />
+	<h:outputScript name="/js/um.js" />
+	<h:outputScript name="/js/dois.js" />
+	<h:outputScript name="/js/carouselControl.js" />
+	<!-- <h:outputScript name="/bootstrap/template/offcanvas.js" /> -->
+</h:body>
+
+
+</html>
