@@ -14,6 +14,12 @@ header {
     left: 0;
 }
 
+.erros {
+	color: red;
+    position: relative;
+    bottom: -30px;
+}
+
 .carousel-control {
 	list-style: none;
 }

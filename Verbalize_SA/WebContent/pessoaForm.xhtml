@@ -88,23 +88,30 @@
 		<h:inputHidden value="#{pessoaMb.pessoa.id}" />
 		<div class="row">
 			<div class="form-group col-xs-8">
-				<label for="exampleInputNome">Nome</label>
+				<label>Nome</label>
 				<div class="input-group">
 					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 					<h:inputText styleClass="form-control" value="#{pessoaMb.pessoa.nmPessoa}" 
-						id="exampleInputNome" placeholder="Seu Nome" maxlength="100" />
+						required="true" requiredMessage="O Campo Nome é obrigatório" id="nome" />
 				</div>
 			</div>
+			<h:message for="nome" errorClass="erros" />
 		</div>
 		<div class="row">
 			<div class="form-group col-xs-8">
-				<label for="exampleInputEmail1">Email</label>
+				<label>Email</label>
 				<div class="input-group">
 					<span class="input-group-addon">@</span>
-					<h:inputText styleClass="form-control" id="exampleInputEmail1"
-					value="#{pessoaMb.pessoa.email}" maxlength="100" size="50" placeholder="tania@abnt.com" />
-				</div>
+							<h:inputText styleClass="form-control" id="email"
+								required="true" requiredMessage="O Campo Email é obrigatório"
+								value="#{pessoaMb.pessoa.email}" maxlength="100" size="50"
+								placeholder="tania@abnt.com" validatorMessage="E-mail incorreto">
+								<f:validateRegex
+									pattern="(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$)" />
+							</h:inputText>
+						</div>
 			</div>
+			<h:message for="email" errorClass="erros" />
 		</div>
 		<div class="row">
 			<div class="form-group col-xs-5">
@@ -168,7 +175,7 @@
 
 			<li><a href="#">Institucional</a></li>
 			<li><a target="_blank" href="http://sc.senai.br/">Senai</a></li>
-			<li><a href="admin.html">Admin</a></li>
+			<li><h:link outcome="/pessoaList" value="Admin" /></li>
 
 		</ul>
 	</div>

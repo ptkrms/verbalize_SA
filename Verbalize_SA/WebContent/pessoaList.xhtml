@@ -68,7 +68,7 @@
 
 	<h:form>
 			<h:dataTable value="#{pessoaMb.listaPessoas}" var="user"
-				styleClass="table">
+				styleClass="table table-hover">
 				<f:facet name="header">Usuários</f:facet>
 				<h:column>
 					<f:facet name="header">ID</f:facet>
@@ -106,7 +106,7 @@
 
 			<li><a href="#">Institucional</a></li>
 			<li><a target="_blank" href="http://sc.senai.br/">Senai</a></li>
-			<li><a href="admin.html">Admin</a></li>
+			<li><h:link outcome="/pessoaList" value="Admin" /></li>
 
 		</ul>
 	</div>
