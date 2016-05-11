@@ -6,8 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.event.ComponentSystemEvent;
 
-import br.verbalize.sc.model.PessoaRN;
 import br.verbalize.sc.model.entity.Pessoa;
+import br.verbalize.sc.model.rn.PessoaRN;
 
 @ManagedBean
 public class PessoaMb {
@@ -15,6 +15,7 @@ public class PessoaMb {
 	private PessoaRN pessoaRN;
 	private Long editarId;
 	private List<Pessoa> listaPessoas;
+	private List<Pessoa> listaProfessores;
 
 	@PostConstruct
 	public void depoisDeConstruir() {
@@ -45,6 +46,13 @@ public class PessoaMb {
 		return listaPessoas;
 	}
 	
+	public List<Pessoa> getListaProfessores() {
+		if(listaProfessores == null) {
+			listaProfessores = pessoaRN.ListarProfessores();
+		}
+		return listaProfessores;
+	}
+	
 	public void setListaPessoas(List<Pessoa> listaPessoas) {
 		this.listaPessoas = listaPessoas;
 	}
@@ -68,5 +76,7 @@ public class PessoaMb {
 		listaPessoas = null;
 		return "";
 	}
+	
+	
 	
 }

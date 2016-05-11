@@ -4,6 +4,8 @@ package br.verbalize.sc.model.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,6 +41,7 @@ public class Pessoa {
 	@Column(nullable=false, length=14)
 	private String senha;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(nullable=false, length=20)
 	private String nmPerfil;
 	

@@ -1,4 +1,4 @@
-package br.verbalize.sc.model;
+package br.verbalize.sc.model.rn;
 
 import java.util.List;
 
@@ -23,6 +23,10 @@ public class PessoaRN {
 	
 	public List<Pessoa> listarPessoas() {
 		return dao.listarPessoas();
+	}
+	
+	public List<Pessoa> ListarProfessores() {
+		return dao.listarProfessores();
 	}
 	
 	public void excluir(Long id) {
