@@ -5,9 +5,10 @@ package br.verbalize.sc;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PessimisticLockScope;
 
 import br.verbalize.sc.model.entity.Pessoa;
-
+import br.verbalize.sc.model.entity.Perfil;
 
 
 public class Main {
@@ -36,7 +37,7 @@ public class Main {
 		aluno.setTelefone("999999999");
 //		aluno.setDtNascimento(Calendar.getInstance().getTime());
 		aluno.setSenha("1234");
-		aluno.setNmPerfil("Aluno");
+//		aluno.setPerfil();
 //		aluno.setTpPermissao(3);
 //		aluno.setDtCadastro(Calendar.getInstance().getTime());
 		
@@ -57,7 +58,7 @@ public class Main {
 		professor.setTelefone("5656565656");
 //		professor.setDtNascimento(Calendar.getInstance().getTime());
 		professor.setSenha("9999");
-		professor.setNmPerfil("Professor");
+//		professor.setPerfil();
 //		professor.setTpPermissao(2);
 //		professor.setDtCadastro(Calendar.getInstance().getTime());
 		
@@ -78,7 +79,7 @@ public class Main {
 		administrador.setTelefone("4545454545");
 //		administrador.setDtNascimento(Calendar.getInstance().getTime());
 		administrador.setSenha("1234");
-		administrador.setNmPerfil("Adminidtrador");
+//		administrador.setPerfil();
 //		administrador.setTpPermissao(1);
 //		administrador.setDtCadastro(Calendar.getInstance().getTime());
 		
@@ -100,7 +101,7 @@ public class Main {
 		aluno.setNuCpf("12121212121212");
 //		aluno.setDtNascimento(Calendar.getInstance().getTime());
 		aluno.setSenha("1234");
-		aluno.setNmPerfil("Aluno");
+//		aluno.setPerfil();
 //		aluno.setTpPermissao(3);
 //		aluno.setDtCadastro(Calendar.getInstance().getTime());
 		

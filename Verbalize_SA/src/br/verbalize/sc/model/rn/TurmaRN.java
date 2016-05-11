@@ -23,7 +23,7 @@ public class TurmaRN {
 		if(turma.getProfessor() == null) {
 			throw new IllegalArgumentException("É preciso selecionar um Professor");
 		}
-		if(!turma.getProfessor().getNmPerfil().equals(Perfil.PROFESSOR)){
+		if(!turma.getProfessor().getPerfil().equals(Perfil.PROFESSOR)){
 			throw new IllegalArgumentException("É preciso selecionar um Professor");
 		}
 		

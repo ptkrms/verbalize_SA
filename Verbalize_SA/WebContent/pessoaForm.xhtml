@@ -45,9 +45,7 @@
 		<div class="collapse navbar-collapse" id="barra">
 			<ul class="nav navbar-nav navbar-right">
 				<li class="active "><a href="#topo">Home</a></li>
-				<li>
-					<h:link outcome="/loginAluno" value="Aluno" />
-				</li>
+				<li><h:link outcome="/loginAluno" value="Aluno" /></li>
 				<li><a href="#">Professor</a></li>
 				<li><a href="#cursos">Cursos</a></li>
 				<li><a href="#jogos">Jogos</a></li>
@@ -68,104 +66,113 @@
 		<div class="col-md-1"></div>
 
 	</div>
-	
-	
-	<div class="container-fluid" style="margin-top: 40px; margin-bottom: 60px;">
-	
-	<div class="col-lg-8 col-lg-offset-2">
-	
-	<h:form>
-		<h:panelGroup rendered="#{not empty pessoaMb.pessoa.id}">
-			
-			<div class="row">
-				<div class="form-group id col-xs-2 col-md-1">
-					<label for="exampleId">ID</label>
-					<h:inputText styleClass="form-control" readonly="true" value="#{pessoaMb.pessoa.id}" id="exampleId" />
+
+
+	<div class="container-fluid"
+		style="margin-top: 40px; margin-bottom: 60px;">
+
+		<div class="col-lg-8 col-lg-offset-2">
+
+			<h:form>
+				<h:panelGroup rendered="#{not empty pessoaMb.pessoa.id}">
+
+					<div class="row">
+						<div class="form-group id col-xs-2 col-md-1">
+							<label for="exampleId">ID</label>
+							<h:inputText styleClass="form-control" readonly="true"
+								value="#{pessoaMb.pessoa.id}" id="exampleId" />
+						</div>
+
+					</div>
+				</h:panelGroup>
+				<h:inputHidden value="#{pessoaMb.pessoa.id}" />
+				<div class="row">
+					<div class="form-group col-xs-8">
+						<label>Nome</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-user"></span></span>
+							<h:inputText styleClass="form-control"
+								value="#{pessoaMb.pessoa.nmPessoa}" required="true"
+								requiredMessage="O Campo Nome é obrigatório" id="nome" />
+						</div>
+					</div>
+					<h:message for="nome" errorClass="erros" />
 				</div>
-				
-			</div>
-		</h:panelGroup>
-		<h:inputHidden value="#{pessoaMb.pessoa.id}" />
-		<div class="row">
-			<div class="form-group col-xs-8">
-				<label>Nome</label>
-				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-					<h:inputText styleClass="form-control" value="#{pessoaMb.pessoa.nmPessoa}" 
-						required="true" requiredMessage="O Campo Nome é obrigatório" id="nome" />
-				</div>
-			</div>
-			<h:message for="nome" errorClass="erros" />
-		</div>
-		<div class="row">
-			<div class="form-group col-xs-8">
-				<label>Email</label>
-				<div class="input-group">
-					<span class="input-group-addon">@</span>
-							<h:inputText styleClass="form-control" id="email"
-								required="true" requiredMessage="O Campo Email é obrigatório"
+				<div class="row">
+					<div class="form-group col-xs-8">
+						<label>Email</label>
+						<div class="input-group">
+							<span class="input-group-addon">@</span>
+							<h:inputText styleClass="form-control" id="email" required="true"
+								requiredMessage="O Campo Email é obrigatório"
 								value="#{pessoaMb.pessoa.email}" maxlength="100" size="50"
 								placeholder="tania@abnt.com" validatorMessage="E-mail incorreto">
 								<f:validateRegex
 									pattern="(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$)" />
 							</h:inputText>
 						</div>
-			</div>
-			<h:message for="email" errorClass="erros" />
+					</div>
+					<h:message for="email" errorClass="erros" />
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<label for="exampleInputCPF">CPF</label>
+						<h:inputText styleClass="form-control" id="exampleInputCPF"
+							value="#{pessoaMb.pessoa.nuCpf}" maxlength="14" size="14" />
+					</div>
+
+					<div class="form-group col-xs-5">
+						<label for="exampleInputTelefone">Telefone</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-phone-alt"></span></span>
+							<h:inputText styleClass="form-control" id="exampleInputTelefone"
+								value="#{pessoaMb.pessoa.telefone}" maxlength="13"
+								placeholder="(XX) XXXXXXXX" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<label for="exampleInputPassword1">Password</label>
+						<h:inputSecret styleClass="form-control"
+							id="exampleInputPassword1" value="#{pessoaMb.pessoa.senha}"
+							maxlength="14" size="14" />
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<label for="exampleInputPerfil">Perfil</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-sunglasses"></span></span>
+							<h:selectOneMenu styleClass="form-control"
+								id="exampleInputPerfil" value="#{pessoaMb.pessoa.perfil}">
+								<f:selectItem itemValue="ADMIN" itemLabel="Administrador" />
+								<f:selectItem itemValue="PROFESSOR" itemLabel="Professor" />
+								<f:selectItem itemValue="ALUNO" itemLabel="Aluno" />
+							</h:selectOneMenu>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-10">
+						<span>
+							<button type="reset" class="btn btn-primary"
+								style="padding: 6px 12px !important;">Restaurar</button>
+						</span> <span> <h:commandButton styleClass="btn btn-success"
+								action="#{pessoaMb.salvar}" value="Salvar" />
+						</span>
+					</div>
+				</div>
+			</h:form>
+
 		</div>
-		<div class="row">
-			<div class="form-group col-xs-5">
-				<label for="exampleInputCPF">CPF</label>
-				<h:inputText styleClass="form-control" id="exampleInputCPF"
-					value="#{pessoaMb.pessoa.nuCpf}" maxlength="14" size="14" />
-			</div>
-			
-			<div class="form-group col-xs-5">
-				<label for="exampleInputTelefone">Telefone</label>
-				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-phone-alt"></span></span>
-					<h:inputText styleClass="form-control" id="exampleInputTelefone"
-						value="#{pessoaMb.pessoa.telefone}" maxlength="13" placeholder="(XX) XXXXXXXX" />
-				</div>		
-			</div>
-			
-		</div>
-		
-		<div class="row">
-			<div class="form-group col-xs-5">
-				<label for="exampleInputPassword1">Password</label>
-				<h:inputSecret styleClass="form-control" id="exampleInputPassword1"
-					value="#{pessoaMb.pessoa.senha}" maxlength="14" size="14" />
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="form-group col-xs-5">
-				<label for="exampleInputPerfil">Perfil</label>
-				<div class="input-group">
-					<span class="input-group-addon"><span class="glyphicon glyphicon-sunglasses"></span></span>
-					<h:selectOneMenu styleClass="form-control" id="exampleInputPerfil" value="#{pessoaMb.pessoa.nmPerfil}">
-			            <f:selectItem itemValue="Adminidtrador" itemLabel="Adminidtrador" />
-			            <f:selectItem itemValue="Aluno" itemLabel="Aluno" />
-			            <f:selectItem itemValue="Professor" itemLabel="Professor" />
-			        </h:selectOneMenu>
-	        	</div>
-	        </div>
-		</div>
-		<div class="row">
-			<div class="col-xs-10">
-				<span>
-					<button type="reset" class="btn btn-primary" style="padding: 6px 12px !important;">Restaurar</button>
-				</span>
-				<span>
-					<h:commandButton styleClass="btn btn-success" action="#{pessoaMb.salvar}" value="Salvar" />
-				</span>
-			</div>
-		</div>
-	</h:form>
-	
-	</div>
-	
+
 	</div>
 
 	<footer class="container-fluid">

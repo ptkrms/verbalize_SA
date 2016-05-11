@@ -42,8 +42,7 @@ public class Pessoa {
 	private String senha;
 	
 	@Enumerated(EnumType.STRING)
-	@Column(nullable=false, length=20)
-	private String nmPerfil;
+	private Perfil perfil;
 	
 	/*@Column(nullable=false, length=1)
 	private int tpPermissao;
@@ -111,12 +110,12 @@ public class Pessoa {
 		this.senha = senha;
 	}
 
-	public String getNmPerfil() {
-		return nmPerfil;
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
-	public void setNmPerfil(String nmPerfil) {
-		this.nmPerfil = nmPerfil;
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	/*public int getTpPermissao() {
