@@ -17,6 +17,11 @@
 	<h:outputStylesheet name="/css/style.css" />
 </h:head>
 
+<f:metadata>
+	<f:viewParam name="id" value="#{turmaMb.editarId}" />
+	<f:event listener="#{turmaMb.carregarTurma}" type="preRenderView" />
+</f:metadata>
+
 <h:body>
 
 	<section id="topo"></section>

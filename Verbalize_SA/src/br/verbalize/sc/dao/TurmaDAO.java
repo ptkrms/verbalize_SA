@@ -17,5 +17,14 @@ public class TurmaDAO extends DAO {
 	public void salvar(Turma turma)throws SQLException {
 		getEM().merge(turma);
 	}
+	
+	public Turma buscarPorId (Long id) {
+		return getEM().find(Turma.class, id);
+	}
+	
+	public void excluir(Long id) {
+		Turma turma = getEM().getReference(Turma.class, id);
+		getEM().remove(turma);
+	}
 
 }
