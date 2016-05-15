@@ -11,7 +11,7 @@ public class TurmaDAO extends DAO {
 	
 	public List<Turma> Listar() {
 		Query query = getEM().createQuery("From Turma", Turma.class);
-		return (query).getResultList();
+		return query.getResultList();
 	}
 	
 	public void salvar(Turma turma)throws SQLException {

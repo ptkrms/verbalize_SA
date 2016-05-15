@@ -1,5 +1,7 @@
 package br.verbalize.sc.model.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,17 +11,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="turma")
+@Table(name = "turma")
 public class Turma {
-	
+
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(unique=true, nullable=false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@Column(nullable=false, length=100)
+	@Column(nullable = false, length = 100)
 	private String nmTurma;
-	
+	private Date dataDeInicio;
+	private Date dataDeConclusao;
+	private Float mensalidade;
 	@ManyToOne
 	private Pessoa professor;
 
@@ -37,6 +39,30 @@ public class Turma {
 
 	public void setNmTurma(String nmTurma) {
 		this.nmTurma = nmTurma;
+	}
+
+	public Date getDataDeInicio() {
+		return dataDeInicio;
+	}
+
+	public void setDataDeInicio(Date dataDeInicio) {
+		this.dataDeInicio = dataDeInicio;
+	}
+
+	public Date getDataDeConclusao() {
+		return dataDeConclusao;
+	}
+
+	public void setDataDeConclusao(Date dataDeConclusao) {
+		this.dataDeConclusao = dataDeConclusao;
+	}
+
+	public Float getMensalidade() {
+		return mensalidade;
+	}
+
+	public void setMensalidade(Float mensalidade) {
+		this.mensalidade = mensalidade;
 	}
 
 	public Pessoa getProfessor() {

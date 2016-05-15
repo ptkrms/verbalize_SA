@@ -13,7 +13,7 @@ import br.verbalize.sc.model.rn.TurmaRN;
 @ManagedBean
 public class TurmaMb {
 	
-	private List<Turma> listaTurmas;
+	private List<Turma> listaTurma;
 	private TurmaRN turmaRN;
 	private Turma turma;
 	
@@ -24,14 +24,14 @@ public class TurmaMb {
 	}
 	
 	public List<Turma> getListaTurma() {
-		if (listaTurmas == null) {
-			listaTurmas = turmaRN.listar();
+		if (listaTurma == null) {
+			listaTurma = turmaRN.listar();
 		}
-		return listaTurmas;
+		return listaTurma;
 	}
 	
-	public void setListaTurma(List<Turma> listaTurmas) {
-		this.listaTurmas = listaTurmas;
+	public void setListaTurma(List<Turma> listaTurma) {
+		this.listaTurma = listaTurma;
 	}
 
 	public Turma getTurma() {
@@ -49,7 +49,7 @@ public class TurmaMb {
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo",
 							"Salvo com sucesso."));
-			return "/turmas";
+			return "/turmaList";
 		} catch (IllegalArgumentException exception) {
 			exception.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(
