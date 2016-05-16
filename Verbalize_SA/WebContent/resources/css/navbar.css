@@ -1,0 +1,91 @@
+.navbar-brand-centered {
+	background-image: url("#{resource['images:Logo.png']}");
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.navbar-brand-centered {
+        position: absolute;
+        left: 10%;
+        display: block;
+        width: 119px;
+        text-align: center;
+}
+
+.navbar-default {
+	background-color: rgba(136, 90, 150,0.6);
+	border-color: rgb(102, 45, 145);
+}
+
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+  color: #d0d0d5;
+}
+.navbar-default .navbar-text {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #FFF;
+  padding:  23px;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  color: rgb(171, 209, 96);
+  background-color: rgb(102, 45, 145);
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #9b59b6;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: rgb(171, 209, 69);
+  background-color: #662d91;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: rgba(155, 89, 182, 0.6);
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+  color: rgb(171, 209, 69);
+  background-color: #662d91;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+  color: #d0d0d5;
+  background-color: #662d91;
+}
+.navbar-default .navbar-toggle {
+  border-color: #662d91;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: #662d91;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-link {
+  color: #ffffff;
+}
+.navbar-default .navbar-link:hover {
+  color: #d0d0d5;
+}
+
+
+@media screen and (min-width:768px){
+    .navbar-brand-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 238px;
+        text-align: center;
+		/* background-color: #eee; */
+    }
+    .navbar>.container .navbar-brand-centered, 
+    .navbar>.container-fluid .navbar-brand-centered {
+        margin-left: -110px;
+    }
+    
+}
