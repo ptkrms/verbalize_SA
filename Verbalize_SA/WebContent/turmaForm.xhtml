@@ -12,7 +12,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Verbalize</ui:insert></title>
 	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
-	<h:outputStylesheet name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+	<h:outputStylesheet
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
 	<h:outputStylesheet name="/css/estilo2.css" />
 	<h:outputStylesheet name="/css/style.css" />
 </h:head>
@@ -74,22 +75,24 @@
 		<div class="col-lg-8 col-lg-offset-2">
 
 			<h:messages />
-	    <h:form>
-	    	<h:panelGroup rendered="#{not empty turmaMb.turma.id}">
+			<h:form>
+				<h:panelGroup rendered="#{not empty turmaMb.turma.id}">
 					<div class="form-group id">
 						<label>ID</label>
 						<h:inputText styleClass="form-control" readonly="true"
-							value="#{turmaMb.turma.id}"/>
+							value="#{turmaMb.turma.id}" />
 					</div>
 				</h:panelGroup>
-				<h:inputHidden value="#{turmaMb.turma.id}"  />
-				
+				<h:inputHidden value="#{turmaMb.turma.id}" />
+
 				<div class="form-group">
 					<label>Professor</label>
-					<h:selectOneMenu styleClass="form-control" value="#{turmaMb.turma.professor}">
+					<h:selectOneMenu styleClass="form-control"
+						value="#{turmaMb.turma.professor}">
 						<f:selectItem itemLabel="-" />
-						<f:selectItems value="#{pessoaMb.listaProfessores}" var="professor" 
-							itemLabel="#{professor.nmPessoa}" itemValue="#{professor}" />
+						<f:selectItems value="#{pessoaMb.listaProfessores}"
+							var="professor" itemLabel="#{professor.nmPessoa}"
+							itemValue="#{professor}" />
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
@@ -97,7 +100,49 @@
 					<h:inputText styleClass="form-control"
 						value="#{turmaMb.turma.nmTurma}" />
 				</div>
-				
+				<fieldset>
+					<legend>Alunos</legend>
+					<div class="row">
+						<div class="col-sm-9">
+							<h:selectOneMenu id="uiMatriculaAluno" styleClass="form-control"
+								value="#{turmaMb.alunoSelecionado}">
+								<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
+								<f:selectItems value="#{pessoaMb.listaPessoas}" var="Aluno"
+									itemLabel="#{aluno.nmPessoa}" itemValue="#{aluno}" />
+							</h:selectOneMenu>
+						</div>
+						<div class="col-sm-3">
+							<h:commandLink styleClass="btn btn-success">
+								<f:ajax event="click" execute="uiMatriculaAluno"
+									listener="#{turmaMb.matricularAluno}"
+									render="uiAlunosParaMatricular" />
+								<span class="glyphicon glyphicon-plus"></span>
+							</h:commandLink>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<h:dataTable styleClass="table table-hover"
+								id="uiAlunosParaMatricular"
+								value="#{turmaMb.turma.alunosParaMatricular}" var="aluno">
+								<h:column>
+									<f:facet name="header">Nome</f:facet>
+									<h:outputText value="#{aluno.nmPessoa}" />
+								</h:column>
+								<h:column>
+									<f:facet name="header">Controle</f:facet>
+									<h:commandLink>
+										<f:attribute name="idAluno" value="#{aluno}" />
+										<f:ajax event="click" execute="@form" render="@form"
+											listener="#{turmaMb.excluirMatricula}" />
+										<span class="glyphicon glyphicon-remove-circle"></span>
+									</h:commandLink>
+								</h:column>
+							</h:dataTable>
+						</div>
+					</div>
+				</fieldset>
+
 				<div class="form-group">
 					<label>Data de início</label>
 					<div class='input-group date datetimepicker'>
@@ -105,10 +150,10 @@
 							value="#{turmaMb.turma.dataDeInicio}">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 						</h:inputText>
-						<span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-                    </div>
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
 				</div>
 				<div class="form-group">
 					<label>Data de Conclusão</label>
@@ -117,17 +162,17 @@
 							value="#{turmaMb.turma.dataDeConclusao}">
 							<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
 						</h:inputText>
-						<span class="input-group-addon">
-	                        <span class="glyphicon glyphicon-calendar"></span>
-	                    </span>
-                    </div>
+						<span class="input-group-addon"> <span
+							class="glyphicon glyphicon-calendar"></span>
+						</span>
+					</div>
 				</div>
 				<div class="form-group">
 					<label>Mensalidade</label>
 					<h:inputText styleClass="form-control"
 						value="#{turmaMb.turma.mensalidade}" />
 				</div>
-				
+
 				<div class="row">
 					<div class="col-xs-10">
 						<span>
@@ -138,8 +183,8 @@
 						</span>
 					</div>
 				</div>
-				
-	    </h:form>
+
+			</h:form>
 
 		</div>
 
@@ -189,7 +234,8 @@
 	<h:outputScript name="/js/jquery.min.js" />
 	<h:outputScript name="/libs/moment-with-locales.js" />
 	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+	<h:outputScript
+		name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
 	<h:outputScript name="/js/datepicker-component.js" />
 </h:body>
 </html>

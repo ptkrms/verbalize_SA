@@ -1,12 +1,14 @@
 package br.verbalize.sc.model.entity;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -24,6 +26,8 @@ public class Turma {
 	private Float mensalidade;
 	@ManyToOne
 	private Pessoa professor;
+	@ManyToMany
+	private List<Pessoa> alunosParaMatricular; 
 
 	public Long getId() {
 		return id;
@@ -71,6 +75,14 @@ public class Turma {
 
 	public void setProfessor(Pessoa professor) {
 		this.professor = professor;
+	}
+
+	public List<Pessoa> getAlunosParaMatricular() {
+		return alunosParaMatricular;
+	}
+
+	public void setAlunosParaMatricular(List<Pessoa> alunosParaMatricular) {
+		this.alunosParaMatricular = alunosParaMatricular;
 	}
 
 }
