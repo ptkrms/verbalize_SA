@@ -20,7 +20,7 @@
 
 <f:metadata>
 	<f:viewParam name="id" value="#{turmaMb.editarId}" />
-	<f:event listener="#{turmaMb.carregarTurma}" type="preRenderView" />
+	<f:event listener="#{turmaMb.carregarEdicao}" type="preRenderView" />
 </f:metadata>
 
 <h:body>
@@ -104,25 +104,25 @@
 					<legend>Alunos</legend>
 					<div class="row">
 						<div class="col-sm-9">
-							<h:selectOneMenu id="uiMatriculaAluno" styleClass="form-control"
+							<h:selectOneMenu id="uiSelecionaAluno" styleClass="form-control"
 								value="#{turmaMb.alunoSelecionado}">
 								<f:selectItem itemLabel="Selecione" noSelectionOption="true" />
-								<f:selectItems value="#{pessoaMb.listaPessoas}" var="Aluno"
-									itemLabel="#{aluno.nmPessoa}" itemValue="#{aluno}" />
+								<f:selectItems value="#{pessoaMb.listaPessoas}" var="alu"
+									itemLabel="#{alu.nmPessoa}" itemValue="#{alu}" />
 							</h:selectOneMenu>
 						</div>
 						<div class="col-sm-3">
 							<h:commandLink styleClass="btn btn-success">
-								<f:ajax event="click" execute="uiMatriculaAluno"
+								<f:ajax event="click" execute="uiSelecionaAluno"
 									listener="#{turmaMb.matricularAluno}"
-									render="uiAlunosParaMatricular" />
+									render="uiAlunosParaMatricular uiSelecionaAluno" />
 								<span class="glyphicon glyphicon-plus"></span>
 							</h:commandLink>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-sm-12">
-							<h:dataTable styleClass="table table-hover"
+							<h:dataTable styleClass="table-condensed table-hover"
 								id="uiAlunosParaMatricular"
 								value="#{turmaMb.turma.alunosParaMatricular}" var="aluno">
 								<h:column>

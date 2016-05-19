@@ -13,6 +13,7 @@ import javax.persistence.Table;
 //import javax.persistence.Temporal;
 //import javax.persistence.TemporalType;
 
+
 @Entity
 @Table(name="pessoa")
 public class Pessoa {
@@ -140,7 +141,7 @@ public class Pessoa {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

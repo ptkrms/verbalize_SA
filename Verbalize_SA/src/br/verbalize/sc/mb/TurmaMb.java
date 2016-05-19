@@ -6,14 +6,16 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.ComponentSystemEvent;
+//import javax.faces.event.ComponentSystemEvent;
 
 import br.verbalize.sc.model.entity.Pessoa;
 import br.verbalize.sc.model.entity.Turma;
 import br.verbalize.sc.model.rn.TurmaRN;
 
+@ViewScoped
 @ManagedBean
 public class TurmaMb {
 	private List<Turma> listaTurma;
@@ -88,24 +90,24 @@ public class TurmaMb {
 		return "";
 	}
 
-	public void carregarTurma(ComponentSystemEvent event) {
+	/*public void carregarTurma(ComponentSystemEvent event) {
 		if (editarId == null) {
 			return;
 		}
 		turma = turmaRN.buscaPorId(editarId);
-	}
+	}*/
 
-	public String excluir(String id) {
-		Long idExcluir = Long.parseLong(id);
-		turmaRN.excluir(idExcluir);
+	public String excluir(String idParam) {
+		Long id = Long.parseLong(idParam);
+		turmaRN.excluir(id);
 		listaTurma = null;
 		return "";
 	}
 
 	public void carregarEdicao() {
-		if (editarId != null
-				&& !FacesContext.getCurrentInstance().getPartialViewContext()
-						.isAjaxRequest()) {
+		if (editarId != null &&  
+				!FacesContext.getCurrentInstance()
+				.getPartialViewContext().isAjaxRequest()) {
 			turma = turmaRN.buscaPorId(editarId);
 		}
 	}

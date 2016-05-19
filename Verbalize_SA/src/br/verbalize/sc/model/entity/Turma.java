@@ -84,5 +84,5 @@ public class Turma {
 	public void setAlunosParaMatricular(List<Pessoa> alunosParaMatricular) {
 		this.alunosParaMatricular = alunosParaMatricular;
 	}
-
+	
 }
