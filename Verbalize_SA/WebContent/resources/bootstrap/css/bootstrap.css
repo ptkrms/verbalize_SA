@@ -3028,7 +3028,6 @@ select[multiple].input-lg {
           user-select: none;
   background-image: none;
   border: 1px solid transparent;
-  border-radius: 4px;
 }
 .btn:focus,
 .btn:active:focus,
@@ -3182,8 +3181,8 @@ fieldset[disabled] .btn-primary.focus {
 }
 .btn-success {
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: yellowgreen;
+  border-color: #A5C54A;
 }
 .btn-success:focus,
 .btn-success.focus {
@@ -3906,15 +3905,15 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   vertical-align: middle;
 }
 .input-group-addon {
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 1;
-  color: #555;
-  text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  /* border-radius: 4px; */
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1;
+    color: #662D91;
+    text-align: center;
+    background-color: #dadfe1;
+    border: 1px solid #ccc;
+    /* border-radius: 4px; */
 }
 .input-group-addon.input-sm {
   padding: 5px 10px;

@@ -14,6 +14,9 @@
 	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
 	<h:outputStylesheet name="/css/menuLateral.css" />
 	<h:outputStylesheet name="/css/navbar.css" />
+	<h:outputStylesheet name="/css/page.css" />
+	<h:outputStylesheet name="/css/estilo2.css" />
+	<h:outputStylesheet name="/css/panelAdmin.css" />
 	<style>
 		#sidebar-wrapper {
 			top: 67px !important;
@@ -25,12 +28,24 @@
 		a.btn.btn-default {
 			border-radius: 0;
 		}
+		.navbar-default {
+			background-color: rgba(136, 90, 150,0.6) !important;
+			border-color: rgba(102, 45, 145, 1) !important;
+		}
+		.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+			background-color: rgb(102, 45, 145) !important;
+		}
+		@media screen and (min-width:768px){
+		    .navbar-brand-centered {
+		        left: 44% !important;
+		    }
+		}
 	</style>
 </h:head>
 
-<h:body>
+<h:body id="myPage">
         
-        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix">
     	  <div class="container">
 		    <!-- Brand and toggle get grouped for better mobile display -->
 		    <div class="navbar-header">
@@ -40,26 +55,28 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span>
 		      </button>
-		      <div class="navbar-brand navbar-brand-centered">
-		      	
-		      </div>
+		      	<h:link outcome="/index" value="">
+		      		<div class="navbar-brand navbar-brand-centered" />
+				</h:link>
 		    </div>
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
-		      <ul class="nav navbar-nav">
-		        <li><a href="index.xhtml#cursos">Cursos</a></li>
-		        <li><a href="index.xhtml#jogos">Jogos</a></li>
-		        <li><a href="index.xhtml#noticias">Notícias</a></li>
-		      </ul>
 		      <ul class="nav navbar-nav navbar-right">
+				
 		      	<li><h:link outcome="/index" value="Home" /></li>
-		        <li><h:link outcome="/loginAluno" value="Aluno" /></li>
-		        <li><h:link outcome="/loginAluno" value="Professor" /></li>		        
+				<li class="dropdown">
+			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Logout
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Fazer Logoff</a></li>
+			        </ul>
+			      </li>
+				        
 		      </ul>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
-		</nav>	
+		</nav>
 		
  <div id="wrapper">
         
@@ -120,19 +137,109 @@
 						</aside>
 					</div>
                 </div>
+                <br />
                 <div class="row">
-	                <div class="container col-lg-10 col-lg-offset-1" style="margin-top: 20px; margin-bottom: 40px;">
-	                	<div class="btn-group btn-group-justified" role="group" aria-label="...">
-						  <div class="btn-group" role="group">
-						    <h:link styleClass="btn btn-default" outcome="/turmaList" value="Gerenciar Turma" />
-						  </div>
-						  <div class="btn-group" role="group">
-						    <h:link styleClass="btn btn-default" outcome="/pessoaList" value="Gerenciar Pessoa" />
-						  </div>
-						</div>
-	                </div>
+	                
+	               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<h:link styleClass="panelLink" outcome="/turmaList" value="">
+							<div class="offer offer-roxo">
+								<div class="shape">
+									<div class="shape-text">
+										<span class="glyphicon glyphicon-education"></span>							
+									</div>
+								</div>
+								<div class="offer-content">
+									<h3 class="lead">
+									Manter turma</h3>
+									<h5>Nº de turmas : <label class="label label-roxo">3</label>
+									</h5>
+								</div>
+							</div>
+						</h:link>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<h:link styleClass="panelLink" outcome="/pessoaList" value="">
+							<div class="offer offer-lime">
+								<div class="shape">
+									<div class="shape-text">
+										<span class="glyphicon glyphicon-user"></span>							
+									</div>
+								</div>
+								<div class="offer-content">
+									<h3 class="lead">
+									Manter Usuário</h3>
+									<h5>Nº de usuários : <label class="label label-lime">10</label>
+									</h5>
+								</div>
+							</div>
+						</h:link>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<h:link styleClass="panelLink" outcome="" value="">
+							<div class="offer offer-roxo">
+								<div class="shape">
+									<div class="shape-text">
+										<span class="glyphicon glyphicon-apple"></span>							
+									</div>
+								</div>
+								<div class="offer-content">
+									<h3 class="lead">
+									Manter Professor</h3>
+									<h5>Nº de professores : <label class="label label-roxo">3</label>
+									</h5>
+								</div>
+							</div>
+						</h:link>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						<h:link styleClass="panelLink" outcome="/#" value="">
+							<div class="offer offer-lime">
+								<div class="shape">
+									<div class="shape-text">
+										<span class="glyphicon glyphicon-usd"></span>							
+									</div>
+								</div>
+								<div class="offer-content">
+									<h3 class="lead">
+									Manter aluno</h3>
+									<h5>Nº de alunos : <label class="label label-lime">3</label>
+									</h5>
+								</div>
+							</div>
+						</h:link>
+					</div> 
+	                
 	           </div>
+	           
             </div>
+        <br /><br /><br /><br />
+        
+        <!-- Rodapé -->
+	<footer class="container-fluid text-center">
+		<div class="col-sm-4 col-xs-12">
+			<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+				<h4>Desenvolvedores</h4>
+
+				<li><span class="glyphicon glyphicon-hand-right"></span>
+					Jefferson Lima</li>
+				<li style="margin-top: -15px;"><span class="glyphicon glyphicon-hand-right"></span>
+					Patrick Ramos</li>
+			</ul>
+		</div>
+		<div class="col-sm-4 col-xs-12">
+		<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+			<h4>Contato</h4>
+			<li><a href="mailto:jlima004@gmail.com"><span
+					class="glyphicon glyphicon-envelope"></span>
+					info@verbalize.com</a></li>
+			<li><span class="glyphicon glyphicon-earphone"></span> (48)123 456789</li>
+		</ul>
+	  	</div>
+	  	<div class="col-sm-4 col-xs-12" id="logo_i">
+	  		<div class="logo_inverso"></div>
+	  		<p>Informática Para Internet <a href="http://sc.senai.br/" title="Visite o SENAI">sc.senai.br</a></p>
+	  	</div>
+	</footer>
         </div>
         <!-- /#page-content-wrapper -->
 

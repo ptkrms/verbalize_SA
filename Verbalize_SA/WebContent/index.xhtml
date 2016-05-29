@@ -4,7 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://java.sun.com/jsf/passthrough">
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
 
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -12,47 +12,218 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title><ui:insert name="title">Verbalize</ui:insert></title>
 	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/css/page.css" />
+	<h:outputStylesheet name="/css/navbar.css" />
 	<h:outputStylesheet name="/css/estilo2.css" />
 	<h:outputStylesheet name="/css/style.css" />
-	<!-- <h:outputStylesheet name="/bootstrap/template/offcanvas.css" /> -->
+	<h:outputScript name="/js/jquery.min.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<h:outputScript name="/js/page.js" />
+	<h:outputScript name="/js/login.js" />
+	
+  
+	<style>
+		#sidebar-wrapper {
+			top: 67px !important;
+		}
+		.navbar-brand {
+			height: 100px !important;
+		}
+		body { padding-top: 70px !important; }
+		a.btn.btn-default {
+			border-radius: 0;
+		}
+	</style>
+	
+	<style>
+				/* #####################################################################
+		   #
+		   #   Project       : Modal Login with jQuery Effects
+		   #   Author        : Rodrigo Amarante (rodrigockamarante)
+		   #   Version       : 1.0
+		   #   Created       : 07/28/2015
+		   #   Last Change   : 08/02/2015
+		   #
+		   ##################################################################### */
+		   
+		@import url(http://fonts.googleapis.com/css?family=Roboto);
+		
+		* {
+		    font-family: 'Roboto', sans-serif;
+		}
+		
+		#login-modal .modal-dialog {
+		    width: 350px;
+		}
+		
+		#login-modal input[type=text], input[type=password] {
+			margin-top: 10px;
+		}
+		
+		#div-login-msg,
+		#div-lost-msg,
+		#div-register-msg {
+		    border: 1px solid #dadfe1;
+		    height: 30px;
+		    line-height: 28px;
+		    transition: all ease-in-out 500ms;
+		}
+		
+		#div-login-msg.success,
+		#div-lost-msg.success,
+		#div-register-msg.success {
+		    border: 1px solid #68c3a3;
+		    background-color: #c8f7c5;
+		}
+		
+		#div-login-msg.error,
+		#div-lost-msg.error,
+		#div-register-msg.error {
+		    border: 1px solid #eb575b;
+		    background-color: #ffcad1;
+		}
+		
+		#icon-login-msg,
+		#icon-lost-msg,
+		#icon-register-msg {
+		    width: 30px;
+		    float: left;
+		    line-height: 28px;
+		    text-align: center;
+		    background-color: #dadfe1;
+		    color: #6948B5 !important;
+		    margin-right: 5px;
+		    transition: all ease-in-out 500ms;
+		}
+		
+		#icon-login-msg.success,
+		#icon-lost-msg.success,
+		#icon-register-msg.success {
+		    background-color: #68c3a3 !important;
+		}
+		
+		#icon-login-msg.error,
+		#icon-lost-msg.error,
+		#icon-register-msg.error {
+		    background-color: #eb575b !important;
+		}
+		
+		/* #########################################
+		   #    override the bootstrap configs     #
+		   ######################################### */
+		
+		.modal-backdrop.in {
+		    filter: alpha(opacity=50);
+		    opacity: .8;
+		}
+		
+		.modal-content {
+		    background-color: #ececec;
+		    border: 1px solid #bdc3c7;
+		    border-radius: 0px !important;
+		    outline: 0;
+		}
+		
+		.modal-header {
+		    min-height: 16.43px;
+		    padding: 15px 15px 15px 15px;
+		    border-bottom: 0px;
+		}
+		
+		.modal-body {
+		    position: relative;
+		    padding: 5px 15px 5px 15px;
+		}
+		
+		.modal-footer {
+		    padding: 15px 15px 15px 15px;
+		    text-align: left;
+		    border-top: 0px;
+		}
+		
+		.checkbox {
+		    margin-bottom: 0px;
+		}
+		
+		.btn {
+		    border-radius: 0px;
+		}
+		
+		.btn:focus,
+		.btn:active:focus,
+		.btn.active:focus,
+		.btn.focus,
+		.btn:active.focus,
+		.btn.active.focus {
+		    outline: none;
+		}
+		
+		.btn-lg, .btn-group-lg>.btn {
+		    border-radius: 0px !important;
+		}
+		
+		.btn-link {
+		    padding: 5px 10px 0px 0px;
+		    color: #95a5a6;
+		}
+		
+		.btn-link:hover, .btn-link:focus {
+		    color: #2c3e50;
+		    text-decoration: none;
+		}
+		
+		.glyphicon {
+		    top: 0px;
+		}
+		
+		.form-control {
+		  border-radius: 0px;
+		}
+		
+	</style>
 </h:head>
 
-<h:body>
+<h:body id="myPage">
 
-	<section id="topo"></section>
-	<nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container">
-		<a href="#" class="brand">
-			<div class="navbar-brand"></div>
-		</a>
-		<div class="navbar-header">
-			<!-- Botão para uso em resoluções menores -->
-			<button class="navbar-toggle collapsed" data-toggle="collapse"
-				data-target="#barra">
-				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
-					class="icon-bar"></span>
-			</button>
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix">
+    	  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      	<h:link outcome="/index" value="">
+		      		<div class="navbar-brand navbar-brand-centered" />
+				</h:link>
+		    </div>
 
-
-
-		</div>
-		<!-- Inicio do conteudo do meu menu principal -->
-		<div class="collapse navbar-collapse" id="barra">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="active "><a href="#topo">Home</a></li>
-				<li>
-					<h:link outcome="/loginAluno" value="Aluno" />
-				</li>
-				<li>
-					<h:link outcome="/turmaForm" value="Professor" />
-				</li>
-				<li><a href="#cursos">Cursos</a></li>
-				<li><a href="#jogos">Jogos</a></li>
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
+		      <ul class="nav navbar-nav navbar-right">
 				<li><a href="#gallery">Notícias</a></li>
-			</ul>
-		</div>
-	</div>
-	</nav>
+				<li><a href="#jogos">Jogos</a></li>
+				<li><a href="#cursos">Planos</a></li>
+				<li><a href="#contato">Contato</a></li>
+				<li id="capa"><a href="#myPage">Home</a></li>
+				<li class="dropdown">
+			        <a class="dropdown-toggle navfundo2" data-toggle="dropdown" href="#">Entrar
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Portal do Aluno</a></li>
+			          <li><a href="#">Portal do Professor</a></li>
+			          <hr />
+			          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
+			          <hr />
+			          <li><h:link outcome="/admin" value="Painel Administrativo" /></li>			          
+			        </ul>
+			    </li>	        
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
 
 	<header id="page-top">
 	<div class="container-fluid">
@@ -61,12 +232,10 @@
 				<video autoplay="true" loop="true" id="index-video"> <source
 					src="#{resource['images:Statue_Of_Liberty.mp4']}" type="video/mp4" /></video>
 				<li id="fundo">
-					<div class="banner-img">
-						<img src="images/1.jpg" class="img-responsive" alt="" />
-					</div>
+					
 					<h4>Aprendendo para a vida</h4>
 					<div class="banner-info">
-						<h3>Inglês e Espanhol</h3>
+						<h3>Inglês Online</h3>
 						<p>Matricúlas abertas</p>
 					</div>
 				</li>
@@ -75,17 +244,108 @@
 		</div>
 	</div>
 	</header>
-
-	<div class="content-wrapper">
-
-
-		<section class="gallery primary" id="gallery">
+	<script type="text/javascript">
+		$('body').scrollspy({target : '.navbar'}).on('activate.bs.scrollspy', function() {
+			if ($("#capa").hasClass("active")) {
+				$(".navbar-default").css({"background-color": "rgba(136, 90, 150,0)", "border-color": "rgba(102, 45, 145, 0)"});
+				$(".navbar-nav li a").removeClass("navfundo");
+				$(".navbar-nav li a").addClass("navfundo2");
+			} if ($("#capa").hasClass("active")) {
+				 
+			} else {
+				$(".navbar-default").css({"background-color": "rgba(136, 90, 150,0.6)", "border-color": "rgba(102, 45, 145, 1)"});
+				$(".navbar-nav li a").addClass("navfundo");
+				$(".navbar-nav li a").removeClass("navfundo2");
+			}
+		});
+	</script>
+	<!-- <script>
+		$(document).ready(function(){
+		    $('.navbar').affix({target: "#myPage"}); 
+		    $(".navbar").on('affix.bs.affix', function(){
+		        alert('The navigation menu is about to be affixed - The .affix-top class is about to be replaced with the .affix class');
+		    });
+		});
+	</script> -->
+	
+	<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    	<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header" align="center">
+					<h:graphicImage library="images" name="Logo_inverso.png" alt="logo" />
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					</button>
+				</div>
+                
+                <!-- Begin # DIV Form -->
+                <div id="div-forms">
+                
+                    <!-- Begin # Login Form -->
+                    <form id="login-form">
+		                <div class="modal-body">
+				    		<div id="div-login-msg">
+                                <div id="icon-login-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-login-msg">Digite seu nome de usuário e senha.</span>
+                            </div>
+				    		<input id="login_username" class="form-control" type="text" placeholder="Nome de usuário" required="true" />
+				    		<input id="login_password" class="form-control" type="password" placeholder="Senha" required="true" />
+        		    	</div>
+				        <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
+                            </div>
+				    	    <div>
+                                <h:commandButton id="login_lost_btn" type="button" styleClass="btn btn-link" 
+                                value="Esqueceu sua Senha?" />
+                                <h:button styleClass="btn btn-link" 
+                                outcome="/pessoaForm" value="Registre-se" />
+                            </div>
+				        </div>
+                    </form>
+                    <!-- End # Login Form -->
+                    
+                    <!-- Begin | Lost Password Form -->
+                    <form id="lost-form" style="display:none;">
+    	    		    <div class="modal-body">
+		    				<div id="div-lost-msg">
+                                <div id="icon-lost-msg" class="glyphicon glyphicon-chevron-right"></div>
+                                <span id="text-lost-msg">Digite seu e-mail.</span>
+                            </div>
+		    				<input id="lost_email" class="form-control" type="text" placeholder="E-Mail" required="true" />
+            			</div>
+		    		    <div class="modal-footer">
+                            <div>
+                                <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar</button>
+                            </div>
+                            <div>
+                                <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
+                                <h:button styleClass="btn btn-link" 
+                                outcome="/pessoaForm" value="Registre-se" />
+                            </div>
+		    		    </div>
+                    </form>
+                    <!-- End | Lost Password Form -->
+                    
+                </div>
+                <!-- End # DIV Form -->
+                
+			</div>
+		</div>
+	</div>
+    <!-- END # MODAL LOGIN -->
+	
+<div class="content-wrapper">
+	
+	<!-- Container (gallery Section) -->
+	  <div class="gallery section-primary" id="gallery">
 		<div class="container">
 			<div class="row">
 
 				<div class="row">
 					<div class="col-lg-12 text-center">
-						<h2>Notícias</h2>
+						<h2 id="secaoTitulo">Notícias</h2>
 						<hr class="star-primary" />
 					</div>
 				</div>
@@ -98,7 +358,7 @@
 						<div class="filter pull-left filimg" data-filter=".category-2">Espanhol</div>
 					</div>
 				</div>
-				<div class="col-md-12 col-sm-12 col-xs-12">
+				<div class="col-md-12 col-sm-12 col-xs-12 slideanim">
 					<div class="galleryimg" id="galleryimg">
 						<div class="grid mix category-2 col-md-4 col-sm-6 col-xs-6"
 							data-myorder="1">
@@ -176,119 +436,16 @@
 				</div>
 			</div>
 		</div>
-		</section>
-
-		<section class="success" id="cursos">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2>Cursos</h2>
-					<hr class="star-light" />
-				</div>
-			</div>
-
-
-
-
-
-			<button class="btn btn-block btn-cursos" type="button"
-				data-toggle="collapse" data-target="#ingles" aria-expanded="false"
-				aria-controls="collapseExample">Inglês</button>
-
-			<div class="collapse" id="ingles">
-				<div class="well col-xs-12">
-
-					<div class="col-md-6 col-xs-12">
-						<h:graphicImage library="images" name="inglaterra.png" alt=""
-							class="img-responsive" />
-					</div>
-
-					<div class="col-md-6 col-xs-12">
-
-						<div class="price-table row-fluid">
-							<div class="span4 price-column">
-								<h3>Inglês</h3>
-								<ul class="list">
-									<li class="price">R$ 199,99</li>
-									<li><strong>3 Dias</strong>Por Semana</li>
-									<li><strong>17 Meses </strong>Presenciais</li>
-									<li><strong>Professores </strong>Qualificados</li>
-								</ul>
-								<a href="#contact" class="button button-ps">Matricule-se</a>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-			</div>
-
-			<br />
-
-			<button class="btn btn-block btn-cursos" type="button"
-				data-toggle="collapse" data-target="#espanhol" aria-expanded="false"
-				aria-controls="collapseExample">Espanhol</button>
-
-			<div class="collapse" id="espanhol">
-
-				<div class="well col-xs-12">
-
-					<div class="col-md-6 col-xs-12">
-						<h:graphicImage library="images" name="espanha.png" alt=""
-							class="img-responsive" />
-					</div>
-
-					<div class="col-md-6 col-xs-12">
-
-						<div class="price-table row-fluid">
-							<div class="span4 price-column">
-								<h3>Espanhol</h3>
-								<ul class="list">
-									<li class="price">R$ 199,99</li>
-									<li><strong>3 Dias</strong>Por Semana</li>
-									<li><strong>17 Meses </strong>Presenciais</li>
-									<li><strong>Professores </strong>Qualificados</li>
-								</ul>
-								<a href="#contact" class="button button-ps">Matricule-se</a>
-							</div>
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-
-
 		</div>
-		</section>
-
-		<section class="primary" id="noticias">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-12 text-center">
-					<h2>Redes Sociais</h2>
-					<hr class="star-primary" />
-				</div>
-			</div>
-			<center>
-				<div class="row">
-					<div class="col-md-4">
-						<div class="botaoSocial" id="facebook"></div>
-					</div>
-					<div class="col-md-4">
-						<div class="botaoSocial" id="twitter"></div>
-					</div>
-					<div class="col-md-4">
-						<div class="botaoSocial" id="google"></div>
-					</div>
-				</div>
-			</center>
-		</div>
-		</section>
-
-		<section class="success" id="jogos">
+		
+	<script>
+		$(function() {
+			$('#galleryimg').mixItUp();
+		});
+	</script>
+		
+	<!-- Container (jogos Section) -->
+	<div class="section-success gallery" id="jogos">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -296,7 +453,8 @@
 					<hr class="star-light" />
 				</div>
 			</div>
-			<div class="row">
+			<br />
+			<div class="row slideanim">
 
 				<div class="carousel slide col-xs-offset-1 col-xs-10" id="carrosel">
 
@@ -354,14 +512,14 @@
 						</div>
 
 						<!-- Controles -->
-						<li data-target="#carrosel" class="carousel-control left"
-							data-slide="prev" role="button"><span
-							class="glyphicon glyphicon-chevron-left" aria-hiden="true"></span>
-							<span class="sr-only">Anterior</span></li>
-						<li data-target="#carrosel" class="carousel-control right"
-							data-slide="next" role="button"><span
-							class="glyphicon glyphicon-chevron-right" aria-hiden="true"></span>
-							<span class="sr-only">Próximo</span></li>
+						<span data-target="#carrosel" class="carousel-control left"
+							data-slide="prev"><span
+							class="glyphicon glyphicon-chevron-left"></span>
+							<span class="sr-only">Anterior</span></span>
+						<span data-target="#carrosel" class="carousel-control right"
+							data-slide="next"><span
+							class="glyphicon glyphicon-chevron-right"></span>
+							<span class="sr-only">Próximo</span></span>
 
 					</div>
 				</div>
@@ -369,9 +527,103 @@
 
 			</div>
 		</div>
-		</section>
-
-		<section class="primary" id="contact">
+		</div>
+		
+	<!-- Container (Pricing Section) -->
+	<div class="section-primary gallery" id="cursos">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Planos</h2>
+					<hr class="star-primary" />
+				</div>
+			</div>
+			<br />
+	  <div class="row slideanim">
+	    <div class="col-sm-4 col-xs-12">
+	      <div class="panel panel-default text-center">
+	        <div class="panel-heading">
+	          <h1>1 Mês</h1>
+	        </div>
+	        <div class="panel-body">
+	          <p><strong>20</strong> Lorem</p>
+	          <p><strong>15</strong> Ipsum</p>
+	          <p><strong>5</strong> Dolor</p>
+	        </div>
+	        <div class="panel-footer">
+	          <h3>R$ 19,00</h3>
+	          <h4>por mês</h4>
+	          <button class="btn btn-lg">Assinar</button>
+	        </div>
+	      </div>      
+	    </div>     
+	    <div class="col-sm-4 col-xs-12">
+	      <div class="panel panel-default text-center">
+	        <div class="panel-heading">
+	          <h1>6 Meses</h1>
+	        </div>
+	        <div class="panel-body">
+	          <p><strong>50</strong> Lorem</p>
+	          <p><strong>25</strong> Ipsum</p>
+	          <p><strong>10</strong> Dolor</p>
+	        </div>
+	        <div class="panel-footer">
+	          <h3>R$ 14,90</h3>
+	          <h4>por mês</h4>
+	          <button class="btn btn-lg">Assinar</button>
+	        </div>
+	      </div>      
+	    </div>       
+	    <div class="col-sm-4 col-xs-12">
+	      <div class="panel panel-default text-center">
+	        <div class="panel-heading">
+	          <h1>Anual</h1>
+	        </div>
+	        <div class="panel-body">
+	          <p><strong>100</strong> Lorem</p>
+	          <p><strong>50</strong> Ipsum</p>
+	          <p><strong>25</strong> Dolor</p>
+	        </div>
+	        <div class="panel-footer">
+	          <h3>R$ 10,90</h3>
+	          <h4>por mês</h4>
+	          <button class="btn btn-lg">Assine</button>
+	        </div>
+	      </div>      
+	    </div>    
+	  </div>
+	
+	</div>
+	</div>
+	
+	<!-- Container (Social Section) -->
+	  <div class="section-success gallery" id="social">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<h2>Redes Sociais</h2>
+					<hr class="star-light" />
+				</div>
+			</div>
+			<br />
+			<center>
+				<div class="row slideanim">
+					<div class="col-md-4">
+						<div class="botaoSocial" id="facebook"></div>
+					</div>
+					<div class="col-md-4">
+						<div class="botaoSocial" id="twitter"></div>
+					</div>
+					<div class="col-md-4">
+						<div class="botaoSocial" id="google"></div>
+					</div>
+				</div>
+			</center>
+		</div>
+		</div>
+	
+	<!-- Container (Contato Section) -->
+	<div class="section-primary gallery" id="contato">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 text-center">
@@ -379,7 +631,8 @@
 					<hr class="star-primary" />
 				</div>
 			</div>
-			<div class="row">
+			<br />
+			<div class="row slideanim">
 				<div class="col-lg-8 col-lg-offset-2">
 
 					<form id="cadForm" action="cadInicial?cmd=salvar" method="post"
@@ -389,15 +642,6 @@
 							<div class="input-group">
 								<span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
 								<input type="text" class="form-control" id="nome" name="nome" placeholder="Nome" />
-							</div>
-						</div>
-
-						<div class="form-group col-md-4">
-							<div class="input-group">
-								<span class="input-group-addon"><span
-									class="glyphicon glyphicon-calendar"></span></span> <input type="date"
-									id="dataNasc" class="form-control" name="dtNasc"
-									placeholder="Data de Nascimento" />
 							</div>
 						</div>
 
@@ -418,20 +662,6 @@
 							</div>
 						</div>
 
-						<div class="form-group col-md-8">
-							<label for="sel1">Curso Pretendido</label>
-							<div class="input-group">
-								<span class="input-group-addon"><span class="glyphicon glyphicon-education"></span></span> 
-									<select
-									class="form-control" id="curso" name="curso"
-									placeholder="Selecione">
-									<option>Inglês</option>
-									<option>Espanhol</option>
-									<option>Arabe</option>
-								</select>
-							</div>
-						</div>
-
 						<div class="form-group col-md-12">
 							<label for="comment">Duvidas</label>
 							<textarea class="form-control" rows="5" name="duvidas"
@@ -448,69 +678,33 @@
 				</div>
 			</div>
 		</div>
-		</section>
-		<footer class="container-fluid">
-
-		<div class="col-md-3 col-xs-6">
-			<ul>
-				<h4>Outros</h4>
-
-				<li>
-					<h:link outcome="/turmaList" value="Institucional" />
-				</li>
-				<li><a target="_blank" href="http://sc.senai.br/">Senai</a></li>
-				<li><h:link outcome="/admin" value="Admin" /></li>
-
-			</ul>
 		</div>
-
-		<div class="col-md-3 col-xs-6">
-			<ul>
-				<h4>Contato</h4>
-
-				<li><a href="mailto:jlima004@gmail.com"><span
-						class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-						info@verbalize.com</a></li>
-				<li><span class="glyphicon glyphicon-earphone"
-					aria-hidden="true"></span> (48)123 456789</li>
-			</ul>
-		</div>
-
-		<div class="col-md-3 col-xs-6">
-			<ul>
+	
+	<!-- Rodapé -->
+	<footer class="container-fluid text-center">
+		<div class="col-sm-4 col-xs-12">
+			<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
 				<h4>Desenvolvedores</h4>
 
 				<li><span class="glyphicon glyphicon-hand-right"></span>
 					Jefferson Lima</li>
-				<li><span class="glyphicon glyphicon-hand-right"></span>
+				<li style="margin-top: -15px;"><span class="glyphicon glyphicon-hand-right"></span>
 					Patrick Ramos</li>
 			</ul>
 		</div>
+		<div class="col-sm-4 col-xs-12">
+	  <a href="#myPage" title="Topo">
+	    <span class="glyphicon glyphicon-chevron-up"></span>
+	  </a>
+	  <p>Informática Para Internet <a href="http://sc.senai.br/" title="Visite o SENAI">sc.senai.br</a></p>
+	  	</div>
+	  	<div class="col-sm-4 col-xs-12" id="logo_i">
+	  		<div class="logo_inverso"></div>
+	  	</div>
+	</footer>
 
-		<div class="col-md-3 col-xs-6" id="logo_i">
-			<div class="logo_inverso col-xs-offset-1 col-xs-6"></div>
-			<div class="col-xs-4">
-				<a href="#topo" id="link_topo"><span
-					class="glyphicon glyphicon-arrow-up"></span> Topo</a>
-			</div>
-		</div>
-
-
-
-		</footer>
-	</div>
-
-
-
-
-	<h:outputScript name="/js/jquery.min.js" />
-	<h:outputScript name="/bootstrap/js/bootstrap.js" />
-	<h:outputScript name="/js/jquery.mixitup.js" />
-	<h:outputScript name="/js/um.js" />
-	<h:outputScript name="/js/dois.js" />
-	<h:outputScript name="/js/carouselControl.js" />
-	<!-- <h:outputScript name="/bootstrap/template/offcanvas.js" /> -->
+</div>
+	
 </h:body>
-
 
 </html>

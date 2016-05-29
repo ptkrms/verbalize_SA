@@ -14,6 +14,10 @@ header {
     left: 0;
 }
 
+body {
+	color: #818181;
+}
+
 .erros {
 	color: red;
     position: relative;
@@ -24,7 +28,7 @@ header {
 	list-style: none;
 }
 .carousel-caption {
-	background-color: rgba(0, 0, 0, .68);
+	/* background-color: rgba(0, 0, 0, .68); */
 }
 .carousel-caption h4{
 	color: yellowgreen;
@@ -36,13 +40,13 @@ header {
 
 .btn-primary {
 	background-color: rgb(105, 72, 181) !important;
-	border-color: rgb(102, 45, 145) !important;
+    border-color: rgb(102, 45, 145) !important;
 	padding: 5%;
 }
 
 .btn-primary:hover {
-	background-color: rgb(151, 113, 180) !important;
-	border-color: rgb(72, 45, 134) !important;
+	background-color: rgb(102, 45, 145) !important;
+    border-color: rgb(72, 45, 134) !important;
 	
 }
 
@@ -135,7 +139,7 @@ hr.star-light:after,
 hr.star-primary:after {
     display: inline-block;
     position: relative;
-    top: -.8em;
+    top: -.9em;
     padding: 0 .25em;
     font-size: 2em;
     font-family: 'Glyphicons Halflings';
@@ -160,14 +164,17 @@ hr.star-primary:after {
     background-color: #fff;
 }
 
-section.primary h2{    
+.section-primary h2{    
     color: rgb(102, 45, 145);
     }
     
-section.success{
+.section-success{
     background-color: rgb(102, 45, 145);
     color: #fff;
     }
+..section-success h2{
+	color: #fff !important;
+}
 	
 .left-side{
 	list-style: none;
@@ -190,7 +197,7 @@ section.success{
 	padding-right: 0 !important;
 }
 
-.navbar {
+/* .navbar {
 	margin-bottom: 35px !important;
 }
 	
@@ -200,7 +207,7 @@ section.success{
 }
 .navbar-default .navbar-brand {
 	position: absolute;
-	/*! padding: 20px; */
+	! padding: 20px;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
   color: #d0d0d5;
@@ -256,15 +263,15 @@ section.success{
 }
 .navbar-default .navbar-link:hover {
   color: #d0d0d5;
-}
+} */
 
 .banner-info {
-        position: absolute;
-    top:28%;
+    position: absolute;
+    top: 40%;
     background-color: rgba(102, 45, 145,0.68);
-    padding: 4em 7em;
+    padding: 3em 6em;
     z-index: 999;
-    right: 0
+    right: 0;
 }
 .banner-info h3 {
     font-size:2em;
@@ -287,18 +294,19 @@ section.success{
     top: 39%;
     left: 16px;
     z-index: 999;
-    font-size: 2.2em;
+    font-size: 2em;
     color: #fff;
-    width: 38%;
-    line-height: 1.7em;
+    width: 28%;
+    line-height: 1.5em;
     border-left: 8px solid rgb(102, 45, 145);
     padding-left: 15px;
 }
 
 .navbar-brand {
 	height: 105px !important;
-	width: 19%;
-	min-width: 115px;
+	width: 17%;
+	min-width: 123px;
+	max-width: 230px;
 	background-image: url("#{resource['images:Logo.png']}");
     background-repeat: no-repeat;
     background-size: contain;
@@ -392,14 +400,12 @@ footer ul h4 {
 }
 .logo_inverso {
 	height: 75px;
-	width: 50%;
+	width: 150px;
 	min-width: 94px;
 	background-image: url("#{resource['images:Logo_inverso.png']}");
 	background-repeat: no-repeat;
-	background-size: contain;
-	/* margin-top: 7%;
-	float: left;
-	margin-left: 5%; */
+	margin-left: auto;
+	margin-right: auto;
 }
 /* #link_topo {
 	float: left;
@@ -492,7 +498,11 @@ footer ul h4 {
     color:rgb(255, 255, 255);
 }
 
-
+footer .glyphicon {
+      font-size: 20px;
+      margin-bottom: 20px;
+      color: yellowgreen;
+  }
 
 
 @media (max-width: 767px) {
