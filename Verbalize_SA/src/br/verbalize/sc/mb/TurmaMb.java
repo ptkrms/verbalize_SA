@@ -16,7 +16,7 @@ import br.verbalize.sc.model.entity.Turma;
 import br.verbalize.sc.model.rn.TurmaRN;
 
 @ViewScoped
-@ManagedBean
+@ManagedBean(name="turmaMb")
 public class TurmaMb {
 	private List<Turma> listaTurma;
 	private TurmaRN turmaRN;

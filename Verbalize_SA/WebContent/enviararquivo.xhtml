@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Verbalize</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.css" />
+</h:head>
+
+<f:metadata>
+	<f:viewParam name="idturma" value="#{arquivoMb.turma}" />
+	<f:viewParam name="idiarquivo" value="#{arquivoMb.arquivo}" />
+</f:metadata>
+
+<h:body>
+	<div class="container">
+
+		<h:form enctype="multipart/form-data">
+			<h:panelGroup rendered="#{not empty arquivoMb.arquivo.id}">
+				<div class="form-group id">
+					<label>ID</label>
+					<h:inputText styleClass="form-control" readonly="true"
+						value="#{arquivoMb.arquivo.id}" />
+				</div>
+			</h:panelGroup>
+			<h:inputHidden value="#{arquivoMb.arquivo.id}" />
+			<h:inputHidden value="#{arquivoMb.arquivo.nome}" />
+			<h:inputHidden value="#{arquivoMb.turma}" />
+			<div class="form-group">
+				<label>Data</label>
+				<div class='input-group date datetimepicker'>
+					<h:inputText styleClass="form-control"
+						value="#{arquivoMb.arquivo.data}">
+						<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+					</h:inputText>
+					<span class="input-group-addon"> <span
+						class="glyphicon glyphicon-calendar"></span>
+					</span>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label>Arquivo</label>
+				<h:inputFile styleClass="form-control"
+					value="#{arquivoMb.arquivoUploaded}" />
+			</div>
+			<h:graphicImage rendered="#{not empty arquivoMb.arquivo.nome}"
+			styleClass="img-responsive"
+				name="images/uploads/#{arquivoMb.arquivo.nome}" />
+			<div>
+				<h:commandButton action="#{arquivoMb.salvar}" value="Salvar" />
+			</div>
+		</h:form>
+		
+		<h:outputScript name="/js/jquery.min.js" />
+		<h:outputScript name="/libs/moment-with-locales.js" />
+		<h:outputScript name="/bootstrap/js/bootstrap.js" />
+		<h:outputScript name="/libs/bootstrap-datepicker/bootstrap-datetimepicker.js" />
+		<h:outputScript name="/js/datepicker-component.js" />
+	
+	</div>
+</h:body>
+</html>
