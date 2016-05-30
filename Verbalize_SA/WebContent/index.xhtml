@@ -212,7 +212,7 @@
 			        <a class="dropdown-toggle navfundo2" data-toggle="dropdown" href="#">Entrar
 			        <span class="caret"></span></a>
 			        <ul class="dropdown-menu">
-			          <li><a href="#">Portal do Aluno</a></li>
+			          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
 			          <li><a href="#">Portal do Professor</a></li>
 			          <hr />
 			          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>
@@ -300,7 +300,7 @@
                                 <h:commandButton id="login_lost_btn" type="button" styleClass="btn btn-link" 
                                 value="Esqueceu sua Senha?" />
                                 <h:button styleClass="btn btn-link" 
-                                outcome="/pessoaForm" value="Registre-se" />
+                                outcome="/cadastro" value="Registre-se" />
                             </div>
 				        </div>
                     </form>
@@ -322,7 +322,7 @@
                             <div>
                                 <button id="lost_login_btn" type="button" class="btn btn-link">Log In</button>
                                 <h:button styleClass="btn btn-link" 
-                                outcome="/pessoaForm" value="Registre-se" />
+                                outcome="/cadastro" value="Registre-se" />
                             </div>
 		    		    </div>
                     </form>

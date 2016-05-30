@@ -1,0 +1,483 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Verbalize</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/css/navbar.css" />
+	<h:outputStylesheet name="/css/page.css" />
+	<h:outputStylesheet name="/css/estilo2.css" />
+	<h:outputStylesheet name="/css/panelAdmin.css" />
+	<style>
+		.navbar-brand {
+			height: 100px !important;
+		}
+		body { padding-top: 70px !important; }
+		a.btn.btn-default {
+			border-radius: 0;
+		}
+		.navbar-default {
+			background-color: rgba(136, 90, 150,0.6) !important;
+			border-color: rgba(102, 45, 145, 1) !important;
+		}
+		.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+			background-color: rgb(102, 45, 145) !important;
+		}
+		
+	    .navbar-brand-centered {
+	        left: 10% !important;
+	    }
+	</style>
+	<style>
+		.board{
+		    width: 80%;
+			margin: 60px auto;
+			margin-top: 0;
+	    	margin-bottom: 0;
+			height: 500px;
+			background: #fff;
+			border: 2px solid #662D91;
+			/*box-shadow: 10px 10px #ccc,-10px 20px #ddd;*/
+		}
+		.board .nav-tabs {
+		    position: relative;
+		    /* border-bottom: 0; */
+		    /* width: 80%; */
+		    margin-bottom: 0;
+		    box-sizing: border-box;
+		
+		}
+		
+		.board > div.board-inner{
+		    background: #fafafa url(http://subtlepatterns.com/patterns/geometry2.png);
+		    background-size: 30%;
+		}
+		
+		p.narrow{
+		    width: 60%;
+		    margin: 10px auto;
+		}
+		
+		.liner{
+		    height: 2px;
+		    background: #ddd;
+		    position: absolute;
+		    width: 79%;
+		    margin: 0 auto;
+		    left: 0;
+		    right: 0;
+		    top: 50%;
+		    z-index: 1;
+		}
+		
+		.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+		    color: #555555;
+		    cursor: default;
+		    background-color: transparent !important;
+		    border: 0 !important;
+		    border-bottom-color: transparent;
+		}
+		
+		span.round-tabs{
+		    width: 70px;
+		    height: 70px;
+		    line-height: 70px;
+		    display: inline-block;
+		    border-radius: 100px;
+		    background: white;
+		    z-index: 2;
+		    position: absolute;
+		    left: 0;
+		    text-align: center;
+		    font-size: 25px;
+		}
+		
+		span.round-tabs.one{
+		    color: #662D91;border: 2px solid #662D91;
+		}
+		
+		li.active span.round-tabs.one{
+		    background: #fff !important;
+		    border: 2px solid #ddd;
+		    color: #662D91;
+		}
+		
+		span.round-tabs.two{
+		    color: yellowgreen;border: 2px solid yellowgreen;
+		}
+		
+		li.active span.round-tabs.two{
+		    background: #fff !important;
+		    border: 2px solid #ddd;
+		    color: yellowgreen;
+		}
+		
+		span.round-tabs.three{
+		    color: #662D91;border: 2px solid #662D91;
+		}
+		
+		li.active span.round-tabs.three{
+		    background: #fff !important;
+		    border: 2px solid #ddd;
+		    color: #662D91;
+		}
+		
+		span.round-tabs.four{
+		    color: yellowgreen;border: 2px solid yellowgreen;
+		}
+		
+		li.active span.round-tabs.four{
+		    background: #fff !important;
+		    border: 2px solid #ddd;
+		    color: yellowgreen;
+		}
+		
+		span.round-tabs.five{
+		    color: #662D91;border: 2px solid #662D91 !important;
+		}
+		
+		li.active span.round-tabs.five{
+		    background: #fff !important;
+		    border: 2px solid #ddd !important;
+		    color: #662D91;
+		}
+		
+		.nav-tabs > li.active > a span.round-tabs{
+		    background: #fafafa !important;
+		}
+		.nav-tabs > li {
+		    width: 18%;
+		}
+		/*li.active:before {
+		    content: " ";
+		    position: absolute;
+		    left: 45%;
+		    opacity:0;
+		    margin: 0 auto;
+		    bottom: -2px;
+		    border: 10px solid transparent;
+		    border-bottom-color: #fff;
+		    z-index: 1;
+		    transition:0.2s ease-in-out;
+		}*/
+		.nav-tabs > li:after {
+		    content: " ";
+		    position: relative;
+		    left: 72%;
+		   	opacity:0;
+		    margin: 0 auto;
+		    bottom: 0px;
+		    border: 5px solid transparent;
+		    border-bottom-color: #ddd;
+		    transition:0.1s ease-in-out;
+		    
+		}
+		.nav-tabs > li.active:after {
+		    content: " ";
+		    position: relative;
+		    left: 72%;
+		   	opacity:1;
+		    margin: 0 auto;
+		    bottom: 6px;
+		    border: 10px solid transparent;
+		    border-bottom-color: #ddd;
+		    
+		}
+		.nav-tabs > li a{
+		   width: 70px;
+		   height: 70px;
+		   margin: 20px auto;
+		   border-radius: 100%;
+		   padding: 0;
+		}
+		
+		.nav-tabs > li a:hover{
+		    background: transparent !important;
+		    border: transparent;
+		}
+		
+		.tab-content{
+			    padding: 10px;
+		}
+		.tab-pane{
+		   	position: relative;
+			padding-top: 25px;
+		}
+		.tab-content .head{
+		    font-family: 'Roboto Condensed', sans-serif;
+		    font-size: 25px;
+		    text-transform: uppercase;
+		    padding-bottom: 10px;
+		}
+		.btn-outline-rounded{
+		    padding: 10px 40px;
+		    margin: 20px 0;
+		    border: 2px solid transparent;
+		    border-radius: 25px;
+		}
+		
+		.btn.green{
+		    background-color:#5cb85c;
+		    /*border: 2px solid #5cb85c;*/
+		    color: #ffffff;
+		}
+		
+		@media(max-width: 1140px) {
+		
+			.nav-tabs > li.active:after {
+				left: 66%;
+			}
+		}
+		
+		@media(max-width: 768px) {
+			
+			.nav-tabs > li.active:after {
+				left: 56%;
+			}
+		}
+		
+		@media( max-width : 585px ){
+		    
+		    .board {
+		width: 90%;
+		height:auto !important;
+		}
+		    span.round-tabs {
+		        font-size:16px;
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		    }
+		    .tab-content .head{
+		        font-size:20px;
+		        }
+		    .nav-tabs > li a {
+		width: 50px;
+		height: 50px;
+		line-height:50px;
+		}
+		
+		.nav-tabs > li.active:after {
+		content: " ";
+		position: relative;
+		left: 56%;
+		}
+		
+		.btn-outline-rounded {
+		    padding:12px 20px;
+		    }
+		}
+	</style>
+</h:head>
+
+<h:body id="myPage">
+        
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix">
+    	  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      	<h:link outcome="/index" value="">
+		      		<div class="navbar-brand navbar-brand-centered" />
+				</h:link>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
+		      <ul class="nav navbar-nav navbar-right">
+				
+		      	<li><h:link outcome="/index" value="Home" /></li>
+		      	<li class="dropdown">
+			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Logout
+			        <span class="caret"></span></a>
+			        <ul class="dropdown-menu">
+			          <li><a href="#">Fazer Logoff</a></li>
+			        </ul>
+			    </li>
+				        
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+	<div class="container" style="margin-top: 40px;">
+
+		<div class="col-md-offset-1 col-md-10">
+			<aside class="jumbotron"
+				style="border-radius: initial; background-color: #17031A; color: #FFF;">
+			<h1>Portal do Aluno</h1>
+			</aside>
+		</div>
+		<div class="col-md-1"></div>
+
+	</div>
+	
+            <div class="container">
+                <div class="row">
+	               
+				        <div class="container">
+				            <div class="row">
+				                <div class="board">
+				                    <!-- <h2>Welcome to IGHALO!<sup>™</sup></h2>-->
+				                    <div class="board-inner">
+				                    <ul class="nav nav-tabs" id="myTab">
+				                    <div class="liner"></div>
+				                     <li class="active">
+				                     <a href="#home" data-toggle="tab" title="Bem vindo">
+				                      <span class="round-tabs one">
+				                              <i class="glyphicon glyphicon-home"></i>
+				                      </span> 
+				                  </a></li>
+				
+				                  <li><a href="#profile" data-toggle="tab" title="Usuário">
+				                     <span class="round-tabs two">
+				                         <i class="glyphicon glyphicon-user"></i>
+				                     </span> 
+				           </a>
+				                 </li>
+				                 <li><a href="#turmas" data-toggle="tab" title="Turmas">
+				                     <span class="round-tabs three">
+				                          <i class="glyphicon glyphicon-education"></i>
+				                     </span> </a>
+				                     </li>
+				
+				                     <li><a href="#mensagens" data-toggle="tab" title="Caixa de mensagens">
+				                         <span class="round-tabs four">
+				                              <i class="glyphicon glyphicon-comment"></i>
+				                         </span> 
+				                     </a></li>
+				
+				                     <li><a href="#financeiro" data-toggle="tab" title="Financeiro">
+				                         <span class="round-tabs five">
+				                              <i class="glyphicon glyphicon-usd"></i>
+				                         </span> </a>
+				                     </li>
+				                     
+				                     </ul></div>
+				
+				                     <div class="tab-content">
+				                      <div class="tab-pane fade in active" id="home">
+										<center>
+				                          <h3>Bem Vindo!</h3>
+				                        </center>
+				                      </div>
+				                      <div class="tab-pane fade" id="profile">
+				                        <center>  
+				                          <h3>Opções do usuário</h3>
+				                        </center>
+				                      </div>
+				                      <div class="tab-pane fade" id="turmas">
+				                          <center>
+				                          	<h2 style="color: #662D91;">Turmas</h2>
+				                          </center>
+				                          <div class="row">
+							               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+												<h:link styleClass="panelLink" outcome="/ava" value="">
+													<div class="offer offer-roxo">
+														<div class="shape">
+															<div class="shape-text">
+																<span class="glyphicon glyphicon-education"></span>							
+															</div>
+														</div>
+														<div class="offer-content">
+															<h3 class="lead">
+															Inglês Nível 1</h3>
+															<h5>Professor: Joél</h5>
+														</div>
+													</div>
+												</h:link>
+											</div>
+											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+												<h:link styleClass="panelLink" outcome="/ava" value="">
+													<div class="offer offer-lime">
+														<div class="shape">
+															<div class="shape-text">
+																<span class="glyphicon glyphicon-education"></span>							
+															</div>
+														</div>
+														<div class="offer-content">
+															<h3 class="lead">
+															Inglês Nível 2</h3>
+															<h5>Professor: Raimundo</h5>
+														</div>
+													</div>
+												</h:link>
+											</div>
+											
+							           </div>
+				                        
+				                      </div>
+				                      <div class="tab-pane fade" id="mensagens">
+				                       <center>
+				                          <h3>Caixa de Mensagens</h3>
+				                       </center>
+				                      </div>
+				                      <div class="tab-pane fade" id="financeiro">
+				  						<center>
+				  							<h3>Financeiro</h3>
+				  						</center>
+									</div>
+									<div class="clearfix"></div>
+									</div>
+									
+									</div>
+									</div>
+									</div>
+									
+						                
+						           </div>
+	           
+            </div>
+        <br /><br /><br /><br />
+        
+        <!-- Rodapé -->
+	<footer class="container-fluid text-center">
+		<div class="col-sm-4 col-xs-12">
+			<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+				<h4>Desenvolvedores</h4>
+
+				<li><span class="glyphicon glyphicon-hand-right"></span>
+					Jefferson Lima</li>
+				<li style="margin-top: -15px;"><span class="glyphicon glyphicon-hand-right"></span>
+					Patrick Ramos</li>
+			</ul>
+		</div>
+		<div class="col-sm-4 col-xs-12">
+		<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+			<h4>Contato</h4>
+			<li><a href="mailto:jlima004@gmail.com"><span
+					class="glyphicon glyphicon-envelope"></span>
+					info@verbalize.com</a></li>
+			<li><span class="glyphicon glyphicon-earphone"></span> (48)123 456789</li>
+		</ul>
+	  	</div>
+	  	<div class="col-sm-4 col-xs-12" id="logo_i">
+	  		<div class="logo_inverso"></div>
+	  		<p>Informática Para Internet <a href="http://sc.senai.br/" title="Visite o SENAI">sc.senai.br</a></p>
+	  	</div>
+	</footer>
+        <!-- /#page-content-wrapper -->
+
+	<h:outputScript name="/js/jquery.min.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+	<script>
+		$(function(){
+			$('a[title]').tooltip();
+		});
+	</script>
+
+</h:body>
+</html>

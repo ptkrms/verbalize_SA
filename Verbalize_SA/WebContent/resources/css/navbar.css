@@ -77,7 +77,7 @@
       background-color: rgb(102, 45, 145) !important;
   }
   
-.navfundo2:ACTIVE, .navfundo2:FOCUS, .navfundo2:VISITED, .navfundo2:LINK {
+.navfundo2:ACTIVE, .navfundo2:FOCUS, .navfundo2:VISITED {
       background-color: rgba(102, 45, 145, 0) !important;
   }
 
