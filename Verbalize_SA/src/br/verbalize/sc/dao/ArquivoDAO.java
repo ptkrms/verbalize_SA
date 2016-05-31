@@ -12,10 +12,10 @@ public class ArquivoDAO extends DAO {
 		getEM().merge(arquivo);
 	}
 
-	public List<Arquivo> listarArquivoPorTurma(Long idTurma) {
+	public List<Arquivo> listarArquivosPorTurma(Long turmaId) {
 		Query query = getEM().createQuery(
-				"From Arquivo i Where i.turma.id = :idturma ", Arquivo.class);
-		query.setParameter("idTurma", idTurma);
+				"From Arquivo i Where i.turma.id = :turmaId ", Arquivo.class);
+		query.setParameter("turmaId", turmaId);
 		return query.getResultList();
 	}
 	

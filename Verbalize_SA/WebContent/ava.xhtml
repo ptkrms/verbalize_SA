@@ -40,7 +40,7 @@
 		    }
 		}
 	</style>
-	<style>
+	<!-- <style>
 		@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
 
 		.panel-heading .btn-clickable
@@ -99,7 +99,7 @@
 		    background-color: rgb(102, 45, 145) !important;
 		    border-color: rgb(72, 45, 134) !important;
 		}
-	</style>
+	</style> -->
 </h:head>
 
 <f:metadata>
@@ -199,32 +199,40 @@
 						<aside class="jumbotron"
 							style="border-radius: initial; background-color: #17031A; color: #FFF;">
 						<h1>Ambiente de aprendizagem</h1>
+						<h3><h:outputText value="#{arquivoMb.turma.nmTurma}" /></h3>
 						</aside>
 					</div>
                 </div>
                 <br />
                 <div class="row">
-                
-	                <div class="col-md-12">
-		                <div class="panel panel-roxo">
-		                
-		                    <div class="panel-heading">
-		                        <h3 class="panel-title">
-		                            Regras ABNT
-		                        </h3>
-		                        <a class="btn btn-roxo btn-clickable pull-right" href="#">
-		                            <i class="fa fa-chevron-down"></i> 
-		                        </a>
-		                    </div>
-		                    
-		                    <div class="panel-body">
-		                    
-		                    
-		                    </div>
-		                    
-		                </div> 
-		            </div>
 		            
+		            <h:form>
+		            	<h:dataTable styleClass="table" value="#{arquivoMb.arquivos}" var="file">
+		            		<h:column>
+		            			<h:outputText value="#{file.data}" />
+		            		</h:column>
+		            		<h:column>
+		            			<h:graphicImage styleClass="img-thumbnail" name="images/uploads/#{file.nome}" />
+		            		</h:column>
+		            		<h:column>
+		            		<span>
+		            			<h:link styleClass="btn btn-warning" outcome="/enviararquivo">
+			            			<f:param name="idarquivo" value="#{file.id}" />
+			            			<f:param name="idturma" value="#{arquivoMb.turma.id}" />
+			            			<span class="glyphicon glyphicon-pencil"></span>
+		            			</h:link>
+		            		</span>
+		            		<span>
+		            			<h:commandLink styleClass="btn btn-warning" onclick="return confirm('Tem certeza da exclusão do arquivo: #{file.nome}')">
+		            				<f:attribute name="idArquivo" value="#{file.id}" />
+		            				<f:ajax listener="#{arquivoMb.excluir}" render="@form" />
+		            				<span class="glyphicon glyphicon-trash"></span>
+		            			</h:commandLink>
+		            		</span>	
+		            		</h:column>
+		            	</h:dataTable>
+		            </h:form>
+		             
 	           </div>
 	           
             </div>
@@ -265,7 +273,7 @@
 	<h:outputScript name="/js/jquery.min.js" />
 	<h:outputScript name="/bootstrap/js/bootstrap.js" />
 	<h:outputScript name="/js/menuLateral.js" />
-	<script>
+	<!-- <script>
 		$(document).on('click', '.panel-heading .btn-clickable', function(e){
 		    var $this = $(this);
 		    if(!$this.hasClass('panel-collapsed')) {
@@ -278,7 +286,7 @@
 				$this.find('i').removeClass('fa-chevron-down').addClass('fa-chevron-up');
 			}
 		})
-	</script>
+	</script> -->
 
 </h:body>
 </html>

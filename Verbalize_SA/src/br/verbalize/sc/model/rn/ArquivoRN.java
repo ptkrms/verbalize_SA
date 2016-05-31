@@ -18,7 +18,7 @@ public class ArquivoRN {
 	}
 	
 	public List<Arquivo> listarArquivosPorTurma(Long idTurma) {
-		return dao.listarArquivoPorTurma(idTurma);
+		return dao.listarArquivosPorTurma(idTurma);
 	}
 	
 	public Arquivo buscarArquivoPorId(Long idArquivo) {

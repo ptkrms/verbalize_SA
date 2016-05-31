@@ -65,6 +65,10 @@ public class ArquivoMb {
 	}
 
 	public List<Arquivo> getArquivos() {
+		if(arquivos == null && turma != null){
+			arquivos = arquivoRN.listarArquivosPorTurma(turma.getId());
+		}
+		
 		return arquivos;
 	}
 
