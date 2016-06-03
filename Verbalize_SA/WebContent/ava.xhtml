@@ -103,7 +103,7 @@
 </h:head>
 
 <f:metadata>
-	<f:viewParam name="idturma" value="#{arquivoMb.turma}" />
+	<f:viewParam name="idturma" value="#{turmaMb.turma}" />
 </f:metadata>
 
 <h:body id="myPage">
@@ -149,7 +149,7 @@
             <ul class="nav sidebar-nav">
                 <li>
                     <h:link outcome="/enviararquivo" value="Enviar arquivos">
-						<f:param name="idturma" value="#{arquivoMb.turma.id}" />
+						<f:param name="idturma" value="#{turmaMb.turma.id}" />
 					</h:link>
                 </li>
                 <li>
@@ -199,7 +199,7 @@
 						<aside class="jumbotron"
 							style="border-radius: initial; background-color: #17031A; color: #FFF;">
 						<h1>Ambiente de aprendizagem</h1>
-						<h3><h:outputText value="#{arquivoMb.turma.nmTurma}" /></h3>
+						<h3><h:outputText value="#{turmaMb.turma.nmTurma}" /></h3>
 						</aside>
 					</div>
                 </div>
@@ -207,7 +207,7 @@
                 <div class="row">
 		            
 		            <h:form>
-		            	<h:dataTable styleClass="table" value="#{arquivoMb.arquivos}" var="file">
+		            	<h:dataTable styleClass="table" value="#{turmaMb.arquivos}" var="file">
 		            		<h:column>
 		            			<h:outputText value="#{file.data}" />
 		            		</h:column>
@@ -218,14 +218,14 @@
 		            		<span>
 		            			<h:link styleClass="btn btn-warning" outcome="/enviararquivo">
 			            			<f:param name="idarquivo" value="#{file.id}" />
-			            			<f:param name="idturma" value="#{arquivoMb.turma.id}" />
+			            			<f:param name="idturma" value="#{turmaMb.turma.id}" />
 			            			<span class="glyphicon glyphicon-pencil"></span>
 		            			</h:link>
 		            		</span>
 		            		<span>
 		            			<h:commandLink styleClass="btn btn-warning" onclick="return confirm('Tem certeza da exclusão do arquivo: #{file.nome}')">
 		            				<f:attribute name="idArquivo" value="#{file.id}" />
-		            				<f:ajax listener="#{arquivoMb.excluir}" render="@form" />
+		            				<f:ajax listener="#{turmaMb.excluirArquivo}" render="@form" />
 		            				<span class="glyphicon glyphicon-trash"></span>
 		            			</h:commandLink>
 		            		</span>	

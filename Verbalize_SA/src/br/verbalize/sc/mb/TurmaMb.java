@@ -11,6 +11,12 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 //import javax.faces.event.ComponentSystemEvent;
 
+
+
+
+import br.verbalize.sc.commons.UploadUtil;
+import br.verbalize.sc.model.entity.Arquivo;
+import br.verbalize.sc.model.rn.ArquivoRN;
 import br.verbalize.sc.model.entity.Pessoa;
 import br.verbalize.sc.model.entity.Turma;
 import br.verbalize.sc.model.rn.TurmaRN;
@@ -23,11 +29,16 @@ public class TurmaMb {
 	private Turma turma;
 	private Long editarId;
 	private Pessoa alunoSelecionado;
+	private ArquivoRN arquivoRN;
+	private Arquivo arquivoDaTurma;
+	private List<Arquivo> arquivos;
 
 	@PostConstruct
 	public void init() {
 		turmaRN = new TurmaRN();
 		turma = new Turma();
+		arquivoRN = new ArquivoRN();
+		arquivoDaTurma = new Arquivo();
 		turma.setAlunosParaMatricular(new ArrayList<Pessoa>());
 	}
 
@@ -65,6 +76,36 @@ public class TurmaMb {
 	public void setEditarId(Long editarId) {
 		this.editarId = editarId;
 	}
+	
+	public TurmaRN getTurmaRN() {
+		return turmaRN;
+	}
+
+	public void setTurmaRN(TurmaRN turmaRN) {
+		this.turmaRN = turmaRN;
+	}
+
+	public Arquivo getArquivoDaTurma() {
+		return arquivoDaTurma;
+	}
+
+	public void setArquivoDaTurma(Arquivo arquivoDaTurma) {
+		this.arquivoDaTurma = arquivoDaTurma;
+	}
+	
+
+	public void setArquivos(List<Arquivo> arquivos) {
+		this.arquivos = arquivos;
+	}
+	
+	public List<Arquivo> getArquivos() {
+		if(arquivos == null && turma != null){
+			arquivos = arquivoRN.listarArquivosPorTurma(turma.getId());
+		}
+		
+		return arquivos;
+	}
+
 
 	public String salvar() throws Throwable {
 		try {
@@ -125,5 +166,21 @@ public class TurmaMb {
 				.get("idAluno");
 		turma.getAlunosParaMatricular().remove(aluno);
 	}
+	
+	
+	
+	public void excluirArquivo(AjaxBehaviorEvent event) {
+		
+		Long idArquivo = (Long) event.getComponent().getAttributes().get("idArquivo");
+		
+		Arquivo arq = arquivoRN.buscarArquivoPorId(idArquivo);
+		
+		UploadUtil.removerArquivo(arq.getNome());
+		arquivoRN.excluir(arq);
+		
+		arquivos = null;
+		
+	}
+	
 
 }

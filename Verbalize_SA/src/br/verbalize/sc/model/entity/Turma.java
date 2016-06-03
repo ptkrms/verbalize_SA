@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,7 +28,9 @@ public class Turma {
 	@ManyToOne
 	private Pessoa professor;
 	@ManyToMany
-	private List<Pessoa> alunosParaMatricular; 
+	private List<Pessoa> alunosParaMatricular;
+	@OneToMany
+	private List<Arquivo> arquivosDaTurma;
 
 	public Long getId() {
 		return id;
@@ -83,6 +86,14 @@ public class Turma {
 
 	public void setAlunosParaMatricular(List<Pessoa> alunosParaMatricular) {
 		this.alunosParaMatricular = alunosParaMatricular;
+	}
+
+	public List<Arquivo> getArquivosDaTurma() {
+		return arquivosDaTurma;
+	}
+
+	public void setArquivosDaTurma(List<Arquivo> arquivosDaTurma) {
+		this.arquivosDaTurma = arquivosDaTurma;
 	}
 	
 }
