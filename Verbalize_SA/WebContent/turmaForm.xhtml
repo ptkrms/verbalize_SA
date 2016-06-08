@@ -154,7 +154,7 @@
 									<f:facet name="header">Controle</f:facet>
 									<h:commandLink>
 										<f:attribute name="idAluno" value="#{aluno}" />
-										<f:ajax event="click" execute="@form" render="@form"
+										<f:ajax event="click" execute="@form" render="@form" onevent="setdatepicker"
 											listener="#{turmaMb.excluirMatricula}" />
 										<span class="glyphicon glyphicon-remove-circle"></span>
 									</h:commandLink>
