@@ -22,6 +22,11 @@ public class UploadUtil {
 	}
 	
 	public static String moverArquivo(Part arquivoUploaded, String arquivoAntigo) throws IOException {
+		
+		if(arquivoUploaded == null){
+			return arquivoAntigo;
+		}
+		
 		String nome = gerarNome(arquivoUploaded);
 		
 		String caminhoAbsoluto = getCaminhoAbsoluto(nome);
