@@ -46,11 +46,6 @@
 		   #
 		   ##################################################################### */
 		   
-		/* @import url(http://fonts.googleapis.com/css?family=Roboto);
-		
-		* {
-		    font-family: 'Roboto', sans-serif;
-		} */
 		
 		#login-modal .modal-dialog {
 		    width: 350px;
@@ -210,22 +205,33 @@
 				<li><a href="#contato">Contato</a></li>
 				<li id="capa"><a href="#myPage">Home</a></li>
 				<li class="dropdown">
-			        <a class="dropdown-toggle navfundo2" data-toggle="dropdown" href="#">Entrar
-			        <span class="caret"></span></a>
+			        
+			        <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+			        	<a href="#" data-toggle="modal" data-target="#login-modal">Entrar</a>
+			        </h:panelGroup>
+			        
+			        <h:link rendered="#{sessaoMb.estaLogado()}" styleClass="dropdown-toggle navfundo2">
+			        	<f:passThroughAttribute name="data-toggle" value="dropdown" />
+			        	<span class="glyphicon glyphicon-user"></span>&nbsp;
+			        	<h:outputText value="#{sessaoMb.nomeUsuarioLogado}"/>
+			        	<span class="caret"></span>
+			        </h:link>
 			       
-		       <h:panelGroup rendered="#{sessaoMb.estaLogado()}"> 
-		        <ul class="dropdown-menu">
-		          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
-		          <li><h:link outcome="/portalProfessor" value="Portal do Professor" /></li>
-		          <li><h:link outcome="/admin/admin" value="Painel Administrativo" /></li>			          
-		        </ul>
-		       </h:panelGroup>
-			       
-			    <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+			       <h:panelGroup rendered="#{sessaoMb.estaLogado()}"> 
 			        <ul class="dropdown-menu">
-			          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>		          
+			          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
+			          <li><h:link outcome="/portalProfessor" value="Portal do Professor" /></li>
+			          <li><h:link outcome="/admin/admin" value="Painel Administrativo" /></li>	
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
 			        </ul>
-			   	</h:panelGroup>
+			       </h:panelGroup>
+			       
+				    <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+				        <ul class="dropdown-menu">
+				          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>		          
+				        </ul>
+				   	</h:panelGroup>
 			        
 			    </li>	        
 		      </ul>

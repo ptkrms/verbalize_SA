@@ -60,18 +60,43 @@
 
 		    <!-- Collect the nav links, forms, and other content for toggling -->
 		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
+		      <h:form>
 		      <ul class="nav navbar-nav navbar-right">
 				
 		      	<li><h:link outcome="/index" value="Home" /></li>
 				<li class="dropdown">
-			        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Logout
-			        <span class="caret"></span></a>
+			        
+			        <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+			        	<a href="#" data-toggle="modal" data-target="#login-modal">Entrar</a>
+			        </h:panelGroup>
+			        
+			        <h:link rendered="#{sessaoMb.estaLogado()}" styleClass="dropdown-toggle navfundo2">
+			        	<f:passThroughAttribute name="data-toggle" value="dropdown" />
+			        	<span class="glyphicon glyphicon-user"></span>&nbsp;
+			        	<h:outputText value="#{sessaoMb.nomeUsuarioLogado}"/>
+			        	<span class="caret"></span>
+			        </h:link>
+			       
+			       <h:panelGroup rendered="#{sessaoMb.estaLogado()}"> 
 			        <ul class="dropdown-menu">
-			          <li><a href="#">Fazer Logoff</a></li>
+			          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
+			          <li><h:link outcome="/portalProfessor" value="Portal do Professor" /></li>
+			          <li><h:link outcome="/admin/admin" value="Painel Administrativo" /></li>	
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
 			        </ul>
-			      </li>
+			       </h:panelGroup>
+			       
+				    <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+				        <ul class="dropdown-menu">
+				          <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a></li>		          
+				        </ul>
+				   	</h:panelGroup>
+			        
+			    </li>	        
 				        
 		      </ul>
+		      </h:form>
 		    </div><!-- /.navbar-collapse -->
 		  </div><!-- /.container-fluid -->
 		</nav>
