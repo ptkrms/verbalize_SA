@@ -75,7 +75,7 @@
 		<div class="col-md-offset-1 col-md-10">
 			<aside class="jumbotron"
 				style="border-radius: initial; background-color: #17031A; color: #FFF;">
-			<h1>Gerenciar Turma</h1>
+			<h1>Gerenciar Pessoa</h1>
 			</aside>
 		</div>
 		<div class="col-md-1"></div>
@@ -84,45 +84,39 @@
 	
 	
 	<div class="container" style="margin-top: 40px; margin-bottom: 60px;">
-	
+
 	<h:form>
-		<h:link outcome="/turmaForm" styleClass="btn btn-success">
+		<h:link outcome="/admin/pessoaForm" styleClass="btn btn-success">
 				<span class="glyphicon glyphicon-plus"></span>
 		</h:link>
-			<h:messages />
-			<h:dataTable styleClass="table table-hover" value="#{turmaMb.listaTurma}"
-				var="turma">
+			<h:dataTable value="#{pessoaMb.listaPessoas}" var="user"
+				styleClass="table table-hover">
 				<h:column>
 					<f:facet name="header">ID</f:facet>
-					<h:outputText value="#{turma.id}" />
+					<h:outputText value="#{user.id}" />
 				</h:column>
 				<h:column>
-					<f:facet name="header">Nome da Turma</f:facet>
-					<h:outputText value="#{turma.nmTurma}" />
-				</h:column>			
-				<h:column>
-					<f:facet name="header">Professor</f:facet>
-					<h:outputText value="#{turma.professor.nmPessoa}" />
+					<f:facet name="header">Nome</f:facet>
+					<h:outputText value="#{user.nmPessoa}" />
 				</h:column>
-				
 				<h:column>
 					<span>
-						<h:link styleClass="btn btn-primary" outcome="/turmaForm"
+						<h:link styleClass="btn btn-primary" outcome="/pessoaForm"
 							value="" style="padding: 6px 12px !important;">
 							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-							<f:param name="id" value="#{turma.id}" />
+							<f:param name="id" value="#{user.id}" />
 						</h:link>
 					</span>
 					<span>
-						<h:commandLink onclick="return confirm('Tem certeza da exclusão da turma #{turma.nmTurma}');" styleClass="btn btn-excluir"
-							action="#{turmaMb.excluir(turma.id)}" value="">
+						<h:commandLink onclick="return confirm('Tem certeza da exclusão do usuário #{user.nmPessoa}');" styleClass="btn btn-excluir"
+							action="#{pessoaMb.excluir(user.id)}" value="">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 							</h:commandLink>
 					</span>
 				</h:column>
-				
+
 			</h:dataTable>
-	</h:form>
+		</h:form>
 	
 	</div>
 

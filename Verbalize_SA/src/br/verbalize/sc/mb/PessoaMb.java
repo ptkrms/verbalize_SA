@@ -73,8 +73,8 @@ public class PessoaMb {
 	
 	public String salvar() {
 		pessoaRN.salvar(pessoa);
-		listaPessoas = null;
-		return "";
+		//listaPessoas = null;
+		return "/admin/pessoaList";
 	}
 	
 }

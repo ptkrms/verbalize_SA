@@ -114,7 +114,7 @@ public class TurmaMb {
 					null,
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Salvo",
 							"Salvo com sucesso."));
-			return "/turmaList";
+			return "/admin/turmaList";
 		} catch (IllegalArgumentException exception) {
 			exception.printStackTrace();
 			FacesContext.getCurrentInstance().addMessage(
