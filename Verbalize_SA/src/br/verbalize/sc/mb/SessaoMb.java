@@ -36,36 +36,36 @@ public class SessaoMb {
 	public boolean estaLogado() {
 		return usuarioLogado != null;
 	}
-	
+
 	public boolean ehAdmin() {
-		return usuarioLogado != null && usuarioLogado.getPerfil().equals(Perfil.ADMIN);
+		return usuarioLogado != null
+				&& usuarioLogado.getPerfil().equals(Perfil.ADMIN);
 	}
-	
+
 	public String getNomeUsuarioLogado() {
 		return usuarioLogado == null ? "" : usuarioLogado.getNmPessoa();
 	}
-	
+
 	public String sair() {
 		usuarioLogado = null;
 		return "/index?faces-redirect=true";
 	}
-	
+
 	public String entrar() {
 		PessoaRN pessoaRN = new PessoaRN();
 		Pessoa pessoa = pessoaRN.buscarPorEmail(emailForm);
-		
-		if(pessoa == null || 
-				!pessoa.getEmail().equalsIgnoreCase(emailForm) ||
-				!pessoa.getSenha().equals(senhaForm)){
-			FacesContext.getCurrentInstance().addMessage(null, 
+
+		if (pessoa == null || !pessoa.getEmail().equalsIgnoreCase(emailForm)
+				|| !pessoa.getSenha().equals(senhaForm)) {
+			FacesContext.getCurrentInstance().addMessage(null,
 					new FacesMessage("E-mail ou senha não confere."));
 			return "";
 		}
-		
+
 		usuarioLogado = pessoa;
-		
+
 		return "/admin/admin?faces-redirect=true";
-		
+
 	}
 
 }

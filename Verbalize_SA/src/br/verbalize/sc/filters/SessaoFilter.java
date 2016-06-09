@@ -24,20 +24,21 @@ public class SessaoFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain filterChain) throws IOException, ServletException {
-		
+
 		HttpServletRequest httpServletRequest = (HttpServletRequest) request;
 		SessaoMb sessaoMb = (SessaoMb) httpServletRequest.getSession()
 				.getAttribute("sessaoMb");
-		
+
 		if (sessaoMb == null || !sessaoMb.ehAdmin()) {
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
-			httpServletResponse.sendRedirect(httpServletRequest.getContextPath().concat(
-					"/index.xhtml?msg=Acesso restrito."));
+			httpServletResponse.sendRedirect(httpServletRequest
+					.getContextPath().concat(
+							"/index.xhtml?msg=Acesso restrito."));
 			return;
 		}
-		
+
 		filterChain.doFilter(request, response);
-		
+
 	}
 
 	@Override
