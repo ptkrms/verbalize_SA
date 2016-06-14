@@ -14,8 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.verbalize.sc.mb.SessaoMb;
 
-@WebFilter(urlPatterns = "/admin/*")
-public class SessaoFilter implements Filter {
+@WebFilter(urlPatterns = "/aluno/*")
+public class AlunoFilter implements Filter {
 
 	@Override
 	public void destroy() {
@@ -29,15 +29,17 @@ public class SessaoFilter implements Filter {
 		SessaoMb sessaoMb = (SessaoMb) httpServletRequest.getSession()
 				.getAttribute("sessaoMb");
 
-		if (sessaoMb == null || !sessaoMb.ehAdmin()) {
+		if (sessaoMb == null || !sessaoMb.ehAluno()) {
 			HttpServletResponse httpServletResponse = (HttpServletResponse) response;
 			httpServletResponse.sendRedirect(httpServletRequest
 					.getContextPath().concat(
 							"/index.xhtml?msg=Acesso restrito."));
 			return;
 		}
-
-		filterChain.doFilter(request, response);
+		
+		if (sessaoMb.ehAluno()) {
+			filterChain.doFilter(request, response);
+		}
 
 	}
 

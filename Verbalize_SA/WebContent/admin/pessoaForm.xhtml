@@ -66,7 +66,7 @@
 		      	<li><h:link outcome="/index" value="Home" /></li>
 				<li class="dropdown">
 			        
-			        <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
+			         <h:panelGroup rendered="#{not sessaoMb.estaLogado()}">
 			        	<a href="#" data-toggle="modal" data-target="#login-modal">Entrar</a>
 			        </h:panelGroup>
 			        
@@ -77,11 +77,25 @@
 			        	<span class="caret"></span>
 			        </h:link>
 			       
-			       <h:panelGroup rendered="#{sessaoMb.estaLogado()}"> 
+			       <h:panelGroup rendered="#{sessaoMb.ehAdmin()}"> 
 			        <ul class="dropdown-menu">
-			          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
-			          <li><h:link outcome="/portalProfessor" value="Portal do Professor" /></li>
 			          <li><h:link outcome="/admin/admin" value="Painel Administrativo" /></li>	
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
+			        </ul>
+			       </h:panelGroup>
+			       
+			        <h:panelGroup rendered="#{sessaoMb.ehProfessor()}"> 
+			        <ul class="dropdown-menu">
+			          <li><h:link outcome="/professor/portalProfessor" value="Portal do Professor" /></li>
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
+			        </ul>
+			       </h:panelGroup>
+			       
+			        <h:panelGroup rendered="#{sessaoMb.ehAluno()}"> 
+			        <ul class="dropdown-menu">
+			          <li><h:link outcome="/aluno/portalAluno" value="Portal do Aluno" /></li>
 			          <hr />
 			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
 			        </ul>

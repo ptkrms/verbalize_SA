@@ -41,6 +41,16 @@ public class SessaoMb {
 		return usuarioLogado != null
 				&& usuarioLogado.getPerfil().equals(Perfil.ADMIN);
 	}
+	
+	public boolean ehProfessor() {
+		return usuarioLogado != null
+				&& usuarioLogado.getPerfil().equals(Perfil.PROFESSOR);
+	}
+	
+	public boolean ehAluno() {
+		return usuarioLogado != null
+				&& usuarioLogado.getPerfil().equals(Perfil.ALUNO);
+	}
 
 	public String getNomeUsuarioLogado() {
 		return usuarioLogado == null ? "" : usuarioLogado.getNmPessoa();
@@ -64,7 +74,18 @@ public class SessaoMb {
 
 		usuarioLogado = pessoa;
 
-		return "/admin/admin?faces-redirect=true";
+		if (ehAdmin()) {
+			return "/admin/admin?faces-redirect=true";
+		}
+		
+		if (ehProfessor()) {
+			return "/professor/portalProfessor?faces-redirect=true";
+		}
+		
+		if (ehAluno()) {
+			return "/aluno/portalAluno?faces-redirect=true";
+		}
+			return"";
 
 	}
 

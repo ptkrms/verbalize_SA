@@ -314,11 +314,25 @@
 			        	<span class="caret"></span>
 			        </h:link>
 			       
-			       <h:panelGroup rendered="#{sessaoMb.estaLogado()}"> 
+			       <h:panelGroup rendered="#{sessaoMb.ehAdmin()}"> 
 			        <ul class="dropdown-menu">
-			          <li><h:link outcome="/portalAluno" value="Portal do Aluno" /></li>
-			          <li><h:link outcome="/portalProfessor" value="Portal do Professor" /></li>
 			          <li><h:link outcome="/admin/admin" value="Painel Administrativo" /></li>	
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
+			        </ul>
+			       </h:panelGroup>
+			       
+			        <h:panelGroup rendered="#{sessaoMb.ehProfessor()}"> 
+			        <ul class="dropdown-menu">
+			          <li><h:link outcome="/professor/portalProfessor" value="Portal do Professor" /></li>
+			          <hr />
+			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
+			        </ul>
+			       </h:panelGroup>
+			       
+			        <h:panelGroup rendered="#{sessaoMb.ehAluno()}"> 
+			        <ul class="dropdown-menu">
+			          <li><h:link outcome="/aluno/portalAluno" value="Portal do Aluno" /></li>
 			          <hr />
 			          <li><h:commandLink action="#{sessaoMb.sair}" value="Sair"/></li>		          
 			        </ul>
@@ -343,7 +357,7 @@
 		<div class="col-md-offset-1 col-md-10">
 			<aside class="jumbotron"
 				style="border-radius: initial; background-color: #17031A; color: #FFF;">
-			<h1>Portal do Professor</h1>
+			<h1>Portal do Aluno</h1>
 			</aside>
 		</div>
 		<div class="col-md-1"></div>
@@ -385,9 +399,9 @@
 				                         </span> 
 				                     </a></li>
 				
-				                     <li><a href="#opcoes" data-toggle="tab" title="Opções">
+				                     <li><a href="#financeiro" data-toggle="tab" title="Financeiro">
 				                         <span class="round-tabs five">
-				                              <i class="glyphicon glyphicon-cog"></i>
+				                              <i class="glyphicon glyphicon-usd"></i>
 				                         </span> </a>
 				                     </li>
 				                     
@@ -450,9 +464,9 @@
 				                          <h3>Caixa de Mensagens</h3>
 				                       </center>
 				                      </div>
-				                      <div class="tab-pane fade" id="opcoes">
+				                      <div class="tab-pane fade" id="financeiro">
 				  						<center>
-				  							<h3>Opções</h3>
+				  							<h3>Financeiro</h3>
 				  						</center>
 									</div>
 									<div class="clearfix"></div>
