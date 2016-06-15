@@ -41,12 +41,12 @@ public class SessaoMb {
 		return usuarioLogado != null
 				&& usuarioLogado.getPerfil().equals(Perfil.ADMIN);
 	}
-	
+
 	public boolean ehProfessor() {
 		return usuarioLogado != null
 				&& usuarioLogado.getPerfil().equals(Perfil.PROFESSOR);
 	}
-	
+
 	public boolean ehAluno() {
 		return usuarioLogado != null
 				&& usuarioLogado.getPerfil().equals(Perfil.ALUNO);
@@ -63,29 +63,36 @@ public class SessaoMb {
 
 	public String entrar() {
 		PessoaRN pessoaRN = new PessoaRN();
-		Pessoa pessoa = pessoaRN.buscarPorEmail(emailForm);
 
-		if (pessoa == null || !pessoa.getEmail().equalsIgnoreCase(emailForm)
-				|| !pessoa.getSenha().equals(senhaForm)) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("E-mail ou senha não confere."));
-			return "";
+		if (emailForm != null && !emailForm.isEmpty() && senhaForm != null
+				&& !senhaForm.isEmpty()) {
+
+			Pessoa pessoa = pessoaRN.buscarPorEmail(emailForm);
+
+			if (pessoa != null && pessoa.getEmail().equalsIgnoreCase(emailForm)
+					&& pessoa.getSenha().equals(senhaForm)) {
+
+				usuarioLogado = pessoa;
+
+				if (ehAdmin()) {
+					return "/admin/admin?faces-redirect=true";
+				}
+
+				if (ehProfessor()) {
+					return "/professor/portalProfessor?faces-redirect=true";
+				}
+
+				if (ehAluno()) {
+					return "/aluno/portalAluno?faces-redirect=true";
+				}
+
+			}
+
 		}
 
-		usuarioLogado = pessoa;
-
-		if (ehAdmin()) {
-			return "/admin/admin?faces-redirect=true";
-		}
-		
-		if (ehProfessor()) {
-			return "/professor/portalProfessor?faces-redirect=true";
-		}
-		
-		if (ehAluno()) {
-			return "/aluno/portalAluno?faces-redirect=true";
-		}
-			return"";
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage("E-mail ou senha não confere."));
+		return "";
 
 	}
 

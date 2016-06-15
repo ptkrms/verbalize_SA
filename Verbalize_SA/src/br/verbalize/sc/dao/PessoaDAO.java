@@ -2,6 +2,7 @@ package br.verbalize.sc.dao;
 
 import java.util.List;
 
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import br.verbalize.sc.model.entity.Perfil;
@@ -39,8 +40,13 @@ public class PessoaDAO extends DAO {
 		Query query = getEM().createQuery(
 				"From Pessoa u Where u.email = :email", Pessoa.class);
 		query.setParameter("email", email);
-		return (Pessoa) query.getSingleResult();
+		
+		try {
+			return (Pessoa) query.getSingleResult();
+			
+		} catch (NoResultException exception) {
+			return null;
+		}
 	}
 	
-
 }
