@@ -1,5 +1,6 @@
 package br.verbalize.sc.model.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Resposta {
 	private String descricao;
 	private String tipoPergunta;
 	private Boolean correta;
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	private Pergunta pergunta;
 	
 	
