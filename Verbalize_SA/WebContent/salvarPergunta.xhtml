@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://java.sun.com/jsf/passthrough">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title><ui:insert name="title">Verbalize</ui:insert></title>
+	<h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+	<h:outputStylesheet name="/css/navbar.css" />
+	<h:outputStylesheet name="/css/estilo2.css" />
+	<style>
+		#sidebar-wrapper {
+			top: 67px !important;
+		}
+		.navbar-brand {
+			height: 100px !important;
+		}
+		body { padding-top: 70px !important; }
+		a.btn.btn-default {
+			border-radius: 0;
+		}
+		.navbar-default {
+			background-color: rgba(136, 90, 150,0.6) !important;
+			border-color: rgba(102, 45, 145, 1) !important;
+		}
+		.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+			background-color: rgb(102, 45, 145) !important;
+		}
+	</style>
+</h:head>
+
+<f:metadata>
+	<f:viewParam name="id" value="#{respostaMb.editarId}" />
+	<f:event listener="#{respostaMb.carregarResposta}" type="preRenderView" />
+</f:metadata>
+
+
+<h:body>
+
+	<nav class="navbar navbar-default navbar-fixed-top" role="navigation" data-spy="affix">
+    	  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		      	<h:link outcome="/index" value="">
+		      		<div class="navbar-brand navbar-brand-centered" />
+				</h:link>
+		    </div>
+
+		    <!-- Collect the nav links, forms, and other content for toggling -->
+		    <div class="collapse navbar-collapse" id="navbar-brand-centered">
+		      <ul class="nav navbar-nav navbar-right">
+				
+		      	<li><h:link outcome="/index" value="Home" /></li>
+				        
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
+
+	<div class="container" style="margin-top: 40px;">
+
+		<div class="col-md-offset-1 col-md-10">
+			<aside class="jumbotron"
+				style="border-radius: initial; background-color: #17031A; color: #FFF;">
+			<h1>Cadastrar pergunta</h1>
+			</aside>
+		</div>
+		<div class="col-md-1"></div>
+
+	</div>
+
+
+	<div class="container-fluid"
+		style="margin-top: 40px; margin-bottom: 60px;">
+
+		<div class="col-lg-8 col-lg-offset-2">
+
+			<h:form>
+				<h:panelGroup rendered="#{not empty respostaMb.pessoa.id}">
+
+					<div class="row">
+						<div class="form-group id col-xs-2 col-md-1">
+							<label for="exampleId">ID</label>
+							<h:inputText styleClass="form-control" readonly="true"
+								value="#{pessoaMb.pessoa.id}" id="exampleId" />
+						</div>
+
+					</div>
+				</h:panelGroup>
+				<h:inputHidden value="#{pessoaMb.pessoa.id}" />
+				<div class="row">
+					<div class="form-group col-xs-8">
+						<label>Nome</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span>
+								class="glyphicon glyphicon-user"></span></span>
+							<h:inputText styleClass="form-control"
+								value="#{pessoaMb.pessoa.nmPessoa}" required="true"
+								requiredMessage="O Campo Nome é obrigatório" id="nome" />
+						</div>
+					</div>
+					<h:message for="nome" errorClass="erros" />
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-8">
+						<label>Email</label>
+						<div class="input-group">
+							<span class="input-group-addon">@</span>
+							<h:inputText styleClass="form-control" id="email" required="true"
+								requiredMessage="O Campo Email é obrigatório"
+								value="#{pessoaMb.pessoa.email}" maxlength="100" size="50"
+								placeholder="tania@abnt.com" validatorMessage="E-mail incorreto">
+								<f:validateRegex
+									pattern="(^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$)" />
+							</h:inputText>
+						</div>
+					</div>
+					<h:message for="email" errorClass="erros" />
+				</div>
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<label for="exampleInputCPF">CPF</label>
+						<h:inputText styleClass="form-control" id="exampleInputCPF"
+							value="#{pessoaMb.pessoa.nuCpf}" maxlength="14" size="14" />
+					</div>
+
+					<div class="form-group col-xs-5">
+						<label for="exampleInputTelefone">Telefone</label>
+						<div class="input-group">
+							<span class="input-group-addon"><span
+								class="glyphicon glyphicon-phone-alt"></span></span>
+							<h:inputText styleClass="form-control" id="exampleInputTelefone"
+								value="#{pessoaMb.pessoa.telefone}" maxlength="13"
+								placeholder="(XX) XXXXXXXX" />
+						</div>
+					</div>
+
+				</div>
+
+				<div class="row">
+					<div class="form-group col-xs-5">
+						<label for="exampleInputPassword1">Password</label>
+						<h:inputSecret styleClass="form-control"
+							id="exampleInputPassword1" value="#{pessoaMb.pessoa.senha}"
+							maxlength="14" size="14" />
+					</div>
+				</div>
+
+				<h:inputHidden value="#{pessoaMb.pessoa.perfil}" />
+				
+				<!-- <h:selectOneMenu styleClass="form-control" readonly="false"
+					id="exampleInputPerfil" value="#{pessoaMb.pessoa.perfil}">
+					<f:selectItem itemValue="ALUNO" itemLabel="Aluno" />
+				</h:selectOneMenu> -->
+				
+				
+				
+				<div class="row">
+					<div class="col-xs-10">
+						<span>
+							<button type="reset" class="btn btn-primary"
+								style="padding: 6px 12px !important;">Restaurar</button>
+						</span> <span> <h:commandButton styleClass="btn btn-success"
+								action="#{pessoaMb.salvar}" value="Salvar" />
+						</span>
+					</div>
+				</div>
+			</h:form>
+
+		</div>
+
+	</div>
+
+	<!-- Rodapé -->
+	<footer class="container-fluid text-center">
+		<div class="col-sm-4 col-xs-12">
+			<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+				<h4>Desenvolvedores</h4>
+
+				<li><span class="glyphicon glyphicon-hand-right"></span>
+					Jefferson Lima</li>
+				<li style="margin-top: -15px;"><span class="glyphicon glyphicon-hand-right"></span>
+					Patrick Ramos</li>
+			</ul>
+		</div>
+		<div class="col-sm-4 col-xs-12">
+		<ul style="margin: 0px; padding: 0px; line-height: 0; border: medium none;">
+			<h4>Contato</h4>
+			<li><a href="mailto:jlima004@gmail.com"><span
+					class="glyphicon glyphicon-envelope"></span>
+					info@verbalize.com</a></li>
+			<li><span class="glyphicon glyphicon-earphone"></span> (48)123 456789</li>
+		</ul>
+	  	</div>
+	  	<div class="col-sm-4 col-xs-12" id="logo_i">
+	  		<div class="logo_inverso"></div>
+	  		<p>Informática Para Internet <a href="http://sc.senai.br/" title="Visite o SENAI">sc.senai.br</a></p>
+	  	</div>
+	</footer>
+
+
+	<h:outputScript name="/js/jquery.min.js" />
+	<h:outputScript name="/bootstrap/js/bootstrap.js" />
+
+</h:body>
+</html>
