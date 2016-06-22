@@ -23,6 +23,19 @@
 	
   
 	<style>
+	
+		.alert.alert-warning.alert-dismissible {
+			position: absolute;
+		    z-index: 99999;
+		    width: 40%;
+		    margin-left: auto;
+		    margin-right: auto;
+		    display: block;
+		    top: 193px;
+		    list-style: none;
+		    left: 30%;
+		}
+		
 		#sidebar-wrapper {
 			top: 67px !important;
 		}
@@ -258,11 +271,12 @@
 	<header id="page-top">
 	
 	<h:panelGroup rendered="#{not empty param.msg}">
-		<div class="alert alert-danger">
+		<div class="alert alert-warning alert-dismissible">
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h:outputText value="#{param.msg}" />
 		</div>
 	</h:panelGroup>
-	<h:messages styleClass="alert alert-warning"></h:messages>
+	<h:messages styleClass="alert alert-warning alert-dismissible"></h:messages>
 	
 	<div class="container-fluid">
 		<div class="row">
@@ -328,23 +342,23 @@
                                 <span id="text-login-msg">Digite seu nome de usuário e senha.</span>
                             </div>
                             
-                            <div class="form-group">
+                           
 								<label for="login_username" />
 								<h:inputText styleClass="form-control" id="login_username"
 									value="#{sessaoMb.emailForm}">
 									<f:passThroughAttribute name="placeholder" value="E-mail" />
 									<f:passThroughAttribute name="required" value="true" />
 								</h:inputText>
-							</div>
 							
-							<div class="form-group">
+							
+							
 								<label for="login_password" />								
 								<h:inputSecret styleClass="form-control" id="login_password"
 									value="#{sessaoMb.senhaForm}">
 									<f:passThroughAttribute name="placeholder" value="Senha" />
 									<f:passThroughAttribute name="required" value="true" />
 								</h:inputSecret>								
-							</div>
+							
                             
         		    	</div>
 				        <div class="modal-footer">

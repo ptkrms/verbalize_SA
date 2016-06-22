@@ -253,7 +253,7 @@
 		            		<h:column>
 		            			<h:graphicImage styleClass="img-thumbnail" name="images/uploads/#{file.nome}" />
 		            		</h:column>
-		            		<h:column>
+		            		<h:column rendered="#{sessaoMb.ehProfessor()}">
 		            		<span>
 		            			<h:link styleClass="btn btn-warning" outcome="/enviararquivo">
 			            			<f:param name="idarquivo" value="#{file.id}" />
