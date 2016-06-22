@@ -422,41 +422,37 @@
 				                          <center>
 				                          	<h2 style="color: #662D91;">Turmas</h2>
 				                          </center>
-				                          <div class="row">
-							               <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-												<h:link styleClass="panelLink" outcome="/ava" value="">
-													<div class="offer offer-roxo">
-														<div class="shape">
-															<div class="shape-text">
-																<span class="glyphicon glyphicon-education"></span>							
-															</div>
-														</div>
-														<div class="offer-content">
-															<h3 class="lead">
-															Inglês Nível 1</h3>
-															<h5>Professor: Joél</h5>
-														</div>
-													</div>
-												</h:link>
-											</div>
-											<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-												<h:link styleClass="panelLink" outcome="/ava" value="">
-													<div class="offer offer-lime">
-														<div class="shape">
-															<div class="shape-text">
-																<span class="glyphicon glyphicon-education"></span>							
-															</div>
-														</div>
-														<div class="offer-content">
-															<h3 class="lead">
-															Inglês Nível 2</h3>
-															<h5>Professor: Raimundo</h5>
-														</div>
-													</div>
-												</h:link>
-											</div>
-											
-							           </div>
+				                          <center>
+					                          <div class="col-xs-10">
+								               
+												<h:form>
+													<h:dataTable styleClass="table table-hover" value="#{turmaMb.listaTurma}"
+														var="turma">
+														<h:column>
+															<f:facet name="header">Nome da Turma</f:facet>
+															<h:outputText value="#{turma.nmTurma}" />
+														</h:column>
+														
+														<h:column>
+															<f:facet name="header">Professor</f:facet>
+															<h:outputText value="#{turma.professor.nmPessoa}" />
+														</h:column>
+														
+														<h:column>
+															<span>
+																<h:link styleClass="btn btn-primary" outcome="/ava"
+																	value="" style="padding: 6px 12px !important;">
+																	<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+																	<f:param name="idturma" value="#{turma.id}" />
+																</h:link>
+															</span>
+														</h:column>
+														
+													</h:dataTable>
+											</h:form>
+												
+								           </div>
+					                      </center>
 				                        
 				                      </div>
 				                      <div class="tab-pane fade" id="mensagens">
